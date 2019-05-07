@@ -23,19 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
-    public static final String USERS_KEY = "users";
-    public static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
     public static final String EMAIL_KEY = "email";
     public static final String PASSWORD_KEY = "password";
-    public static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
     private Button signup;
     private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextFullName;
     private EditText editTextAddress;
     private EditText editTextPhoneNumber;
-    private EditText editTextCardId;
 
     private ProgressBar registerUserProgress;
     private RelativeLayout mainContentRegister;
@@ -51,7 +46,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextFullName = (EditText) findViewById(R.id.name);
         editTextAddress = (EditText) findViewById(R.id.address);
         editTextPhoneNumber = (EditText)findViewById(R.id.phone_number);
-        editTextCardId = (EditText)findViewById(R.id.card_id);
         registerUserProgress = (ProgressBar) findViewById(R.id.register_user_progress);
         mainContentRegister = (RelativeLayout) findViewById(R.id.main_content_register);
         signup.setOnClickListener(this);
@@ -65,7 +59,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         final String phoneNumber = editTextPhoneNumber.getText().toString().trim();
-        final String cardId = editTextCardId.getText().toString().trim();
         if (name.isEmpty()) {
             editTextFullName.setError(getString(R.string.input_error_name));
             editTextFullName.requestFocus();
@@ -109,15 +102,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"INSIDE",Toast.LENGTH_SHORT).show();
                             String uid=mAuth.getCurrentUser().getUid();
-                            final User newUser = new User(uid,cardId,name,email,phoneNumber,address);
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            final User newUser = new User(uid,phoneNumber,name,email,phoneNumber,address);
+                            FirebaseDatabase.getInstance().getReference("users")
                                     .child(uid)
                                     .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(getApplicationContext(),"Registered Successfully",Toast.LENGTH_SHORT).show();
-                                        finish();
+                                        openLoginActivity();
                                     }else{
                                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }

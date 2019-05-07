@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.android.carrental.adapter.StationAdapter;
 import com.android.carrental.model.Station;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()){
             case R.id.nav_help: startActivity(new Intent(HomeActivity.this,HelpActivity.class));break;
+            case R.id.nav_logout : FirebaseAuth.getInstance().signOut();finish();break;
+            case R.id.nav_account : startActivity(new Intent(HomeActivity.this,PaymentActivity.class));break;
         }
         return false;
     }

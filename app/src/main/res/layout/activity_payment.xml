@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PaymentActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/card_number_label"
+            android:text="Card Number"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:gravity="left|center"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColorHighlight="@color/black"
+            android:layout_height="40dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_payment"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/card_number"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/location"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_marginStart="2dp"
+                android:inputType="number"
+                android:background="@drawable/border"
+                android:layout_height="60dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/exp_date_label"
+                android:text="Exp. Date"
+                android:layout_width="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="30dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/cvv_label"
+                android:text="Cvv"
+                android:layout_width="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="160dp"
+                android:gravity="left|center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+            <NumberPicker
+                android:id="@+id/picker_month"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="-50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></NumberPicker>
+
+            <NumberPicker
+                android:id="@+id/picker_year"
+                android:layout_marginTop="-50dp"
+                android:layout_marginLeft="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </NumberPicker>
+
+            <EditText
+                android:id="@+id/cvv"
+                android:layout_width="70dp"
+                android:textSize="17sp"
+                android:gravity="left|center"
+                android:textColor="@color/location"
+                android:padding="10dp"
+                android:inputType="number"
+                android:layout_marginStart="120dp"
+                android:textStyle="bold"
+                android:background="@drawable/border"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/zip_code_label"
+            android:text="Zip Code"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-50dp"
+            android:gravity="left|center"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_height="60dp" />
+        <EditText
+            android:id="@+id/zip_code"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:gravity="left|center"
+            android:textColor="@color/location"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/border"
+            android:layout_height="60dp" />
+
+        <Button
+            android:id="@+id/save_card_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="SAVE"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

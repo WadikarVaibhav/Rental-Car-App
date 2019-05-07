@@ -27,6 +27,7 @@
     <string name="input_error_email_invalid">Please enter a valid email address</string>
     <string name="input_error_password">Please enter your password</string>
     <string name="input_error_password_length">Password Length should be atleast 6 characters</string>
+    <string name="input_error">Please enter valid details</string>
 </resources>
 
 
