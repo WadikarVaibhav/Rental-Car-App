@@ -1,6 +1,11 @@
 package com.android.carrental.model;
 
-public class Car {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Car implements Serializable {
 
     private final String id;
     private final String name;
@@ -57,4 +62,6 @@ public class Car {
     public int getRate() {
         return rate;
     }
+
+
 }

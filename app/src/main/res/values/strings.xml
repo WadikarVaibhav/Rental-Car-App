@@ -9,6 +9,11 @@
     <string name="search_cars">Search</string>
     <string name="vehicle_filter">Vehicle Filter</string>
     <string name="all_type_cars">All Type Cars</string>
+    <string name="rate_label">Rate</string>
+    <string name="default_rate">$8</string>
+    <string name="payment">Payment</string>
+    <string name="confirm_reservation">Confirm Reservation</string>
+
 
     <string name="email">abc@example.com</string>
     <string name="password">password</string>
@@ -27,7 +32,8 @@
     <string name="input_error_email_invalid">Please enter a valid email address</string>
     <string name="input_error_password">Please enter your password</string>
     <string name="input_error_password_length">Password Length should be atleast 6 characters</string>
-    <string name="input_error">Please enter valid details</string>
+    <string name="input_error">Please fill all details</string>
+
 </resources>
 
 

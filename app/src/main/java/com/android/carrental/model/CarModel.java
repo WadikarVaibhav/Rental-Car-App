@@ -1,6 +1,8 @@
 package com.android.carrental.model;
 
-public class CarModel {
+import java.io.Serializable;
+
+public class CarModel implements Serializable {
 
     private String name;
     private String url;
@@ -12,10 +14,6 @@ public class CarModel {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUrl() {

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationViewHolder> {
 
-    public static final String SEPARATOR = ", ";
+    private static final String SEPARATOR = ", ";
     private Context context;
     private List<Station> stations;
 
@@ -40,7 +40,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationV
         stationViewHolder.station_address.setText(station.getAddress());
         stationViewHolder.station_city_and_state.setText(station.getCity().concat(SEPARATOR).concat(station.getState()));
         stationViewHolder.station_distance.setText(station.getDistance()+"");
-        stationViewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
+        stationViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSelectedStationDetails(station);
@@ -49,14 +49,9 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationV
     }
 
     private void openSelectedStationDetails(Station station){
-        Bundle clickedStationDetails = new Bundle();
-        clickedStationDetails.putString("StationId", station.getId());
-        clickedStationDetails.putString("Address", station.getAddress());
-        clickedStationDetails.putString("City", station.getCity());
-        clickedStationDetails.putString("Distance", station.getDistance());
-        clickedStationDetails.putString("State", station.getState());
         Intent intent = new Intent(context, CarOptionsFilter.class);
-        intent.putExtra("stationDetails",clickedStationDetails);
+        intent.putExtra("selectedCarDetails", station);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -70,14 +65,12 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationV
         public TextView station_address;
         public TextView station_city_and_state;
         public TextView station_distance;
-        public LinearLayout parentLayout;
 
         public StationViewHolder(View itemView) {
             super(itemView);
             station_address = itemView.findViewById(R.id.station_address);
             station_city_and_state = itemView.findViewById(R.id.station_city_and_state);
             station_distance = itemView.findViewById(R.id.station_distance);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
 

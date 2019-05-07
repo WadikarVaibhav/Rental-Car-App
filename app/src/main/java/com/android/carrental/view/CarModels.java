@@ -59,7 +59,7 @@ public class CarModels extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         carModels = new ArrayList<>();
-        carModelsAdapter = new CarModelsAdapter(getApplicationContext(), carModels);
+        carModelsAdapter = new CarModelsAdapter(getApplicationContext(), carModels, this);
         carModelsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(carModelsAdapter);
     }

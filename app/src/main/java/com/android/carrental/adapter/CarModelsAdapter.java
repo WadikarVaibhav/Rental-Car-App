@@ -1,6 +1,9 @@
 package com.android.carrental.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +21,12 @@ public class CarModelsAdapter extends RecyclerView.Adapter<CarModelsAdapter.CarM
 
     private Context context;
     private List<CarModel> carmodels;
+    private Activity activity;
 
-    public CarModelsAdapter(Context context, List<CarModel> carmodels) {
+    public CarModelsAdapter(Context context, List<CarModel> carmodels, Activity activity) {
         this.context = context;
         this.carmodels = carmodels;
+        this.activity = activity;
     }
 
     @Override
@@ -32,13 +37,23 @@ public class CarModelsAdapter extends RecyclerView.Adapter<CarModelsAdapter.CarM
 
     @Override
     public void onBindViewHolder(final CarModelsAdapter.CarModelViewHolder carModelViewHolder, int i) {
-        CarModel carModel = carmodels.get(i);
+        final CarModel carModel = carmodels.get(i);
         carModelViewHolder.car_model_name.setText(carModel.getName());
-        Picasso.with(context)
-                .load(carModel.getUrl())
-                .fit()
-                .centerCrop()
-                .into(carModelViewHolder.car_model_image);
+        carModelViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCarFilterActivity(carModel);
+            }
+        });
+    }
+
+    private void openCarFilterActivity(CarModel carModel) {
+        Intent returnToCarFilter = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("carmodel", carModel);
+        returnToCarFilter.putExtras(bundle);
+        activity.setResult(Activity.RESULT_OK, returnToCarFilter);
+        activity.finish();
     }
 
     @Override
@@ -49,12 +64,10 @@ public class CarModelsAdapter extends RecyclerView.Adapter<CarModelsAdapter.CarM
     public class CarModelViewHolder extends RecyclerView.ViewHolder {
 
         public TextView car_model_name;
-        public ImageView car_model_image;
 
         public CarModelViewHolder(View itemView) {
             super(itemView);
             car_model_name = itemView.findViewById(R.id.car_model_name);
-            car_model_image = itemView.findViewById(R.id.car_model_image);
         }
     }
 

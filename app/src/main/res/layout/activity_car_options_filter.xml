@@ -8,6 +8,11 @@
     android:weightSum="11"
     tools:context=".CarOptionsFilter">
 
+    <Spinner
+        android:id="@+id/car_stations_spinner_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+
     <LinearLayout
         android:id="@+id/date_picker"
         android:layout_width="match_parent"
@@ -27,15 +32,15 @@
             android:textSize="18sp" />
 
         <Button
-            android:layout_width="0dp"
             android:id="@+id/date_selector"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="right|center"
-            android:focusable="false"
             android:background="@android:color/transparent"
-            android:textColor="@color/location"
+            android:focusable="false"
+            android:gravity="right|center"
             android:text="@string/default_date"
+            android:textColor="@color/location"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -67,11 +72,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:focusable="false"
                 android:gravity="left|center"
-                android:background="@android:color/transparent"
-                android:textColor="@color/location"
                 android:text="@string/default_start_time"
+                android:textColor="@color/location"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -96,11 +101,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|center"
-                android:focusable="false"
                 android:background="@android:color/transparent"
-                android:textColor="@color/location"
+                android:focusable="false"
+                android:gravity="right|center"
                 android:text="@string/default_end_time"
+                android:textColor="@color/location"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -111,15 +116,14 @@
         android:layout_height="0dp"
         android:layout_margin="3dp"
         android:layout_weight="1.2"
-        android:id="@+id/car_types"
-        android:orientation="horizontal"
         android:background="@drawable/border"
+        android:orientation="horizontal"
         android:weightSum="5">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4.5"
+            android:layout_weight="2.5"
             android:orientation="vertical">
 
             <TextView
@@ -139,43 +143,39 @@
 
         </LinearLayout>
 
-        <ImageView
+        <Button
+            android:id="@+id/car_type_selector"
             android:layout_width="0dp"
-            android:layout_weight="0.5"
             android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:tint="@color/location"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
             android:gravity="right|center"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
+            android:textColor="@color/location"
+            android:textSize="18sp"
+            android:tint="@color/location" />
 
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/search_car"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="7dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="@string/search_cars"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="2dp"
-        android:layout_weight="6">
+        android:layout_weight="6"
+        android:id="@+id/available_cars_container">
 
     </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/searchCar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/border"
-            android:text="@string/search_cars" />
-
-    </LinearLayout>
 
 
 </LinearLayout>

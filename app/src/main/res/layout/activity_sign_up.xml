@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".userauth.SignUpActivity">
     <ProgressBar
         android:id="@+id/register_user_progress"
         android:layout_width="60dp"
@@ -90,12 +90,22 @@
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"
             />
+        <EditText
+            android:id="@+id/card_id"
+            android:layout_below="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="@string/card_id"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/register_user"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
+            android:layout_below="@+id/card_id"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="10dp"
@@ -105,7 +115,21 @@
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
-
+        <Button
+            android:id="@+id/resend_card_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_id"
+            android:layout_toRightOf="@+id/register_user"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:paddingRight="2dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/resend_card_id"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 

@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/parent_layout"
-    tools:context=".help.Help">
+    tools:context=".view.AvailableCars">
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/IssuesDisplay"
+        android:id="@+id/recycler_view_available_cars"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
