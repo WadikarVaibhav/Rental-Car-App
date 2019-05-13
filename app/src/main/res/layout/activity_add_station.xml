@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/distance"
             android:background="@color/colorPrimary"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />

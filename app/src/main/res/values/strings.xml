@@ -39,9 +39,32 @@
     <string name="address_city_hint">City</string>
     <string name="address_zipcode_hint">Zip Code</string>
     <string name="title_registration">Registration</string>
+    <string name="car_name_hint">Car Name</string>
+    <string name="car_color_hint">Car Color</string>
+    <string name="car_number_hint">Car Number</string>
+    <string name="car_rate_hint">Car Rate</string>
+    <string name="save">Save</string>
+    <string name="all_types">All Types</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--guide-->
+    <string name="title_help">Guide to rent a car</string>
+    <string name="guide"> -> Go to the home page where you can see   multiple stations that are present.\n\n
+-> Choose the station that is closest to you.\n\n
+-> Next,you enter the date and timings for which you want to rent a car.\n\n
+-> Dont forget to choose the type of car that you would like to rent.\n\n
+-> Review your order and confirm to reserve your car.</string>
+
+
+    <!--payment details string values-->
+    <string name="card_number">Card Number</string>
+    <string name="exp_date">Exp. Date</string>
+    <string name="cvv">Cvv</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="default_month">MM</string>
+    <string name="default_year">YYYY</string>
+    <string name="input_error_date_year">Please enter a valid year</string>
+    <string name="input_error_date_month">Please enter a valid month</string>
+
 
     <!--my account string values-->
     <string name="name_on_my_account">Name</string>

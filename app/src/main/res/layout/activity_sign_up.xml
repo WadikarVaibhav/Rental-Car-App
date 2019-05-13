@@ -30,6 +30,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:hint="@string/email"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -40,6 +41,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:textColor="@color/black"
             android:hint="@string/password"
             android:inputType="textPassword" />
 
@@ -53,6 +55,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:hint="@string/name"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
         <EditText
             android:id="@+id/phone_number"
@@ -62,6 +65,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:textColor="@color/black"
             android:hint="@string/phone_number"
             android:inputType="number" />
 
@@ -75,6 +79,7 @@
             android:layout_marginRight="10dp"
             android:hint="@string/address_street_hint"
             android:gravity="top|left"
+            android:textColor="@color/black"
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"
             />
@@ -88,6 +93,7 @@
             android:layout_marginRight="10dp"
             android:hint="@string/address_apt_number__hint"
             android:gravity="top|left"
+            android:textColor="@color/black"
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"
             />
@@ -101,6 +107,7 @@
             android:layout_marginRight="10dp"
             android:hint="@string/address_city_hint"
             android:gravity="top|left"
+            android:textColor="@color/black"
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"
             />
@@ -113,6 +120,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:hint="@string/address_zipcode_hint"
+            android:textColor="@color/black"
             android:gravity="top|left"
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"

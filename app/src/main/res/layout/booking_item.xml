@@ -22,6 +22,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="left|center"
+                android:textColor="@color/black"
                 android:id="@+id/booking_date"/>
 
             <LinearLayout
@@ -35,12 +36,14 @@
                     android:id="@+id/booking_station"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/booking_car"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -51,6 +54,7 @@
                 android:layout_weight="1"
                 android:gravity="right|center"
                 android:layout_height="match_parent"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
         </LinearLayout>
