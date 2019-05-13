@@ -48,11 +48,10 @@
 
     <!--guide-->
     <string name="title_help">Guide to rent a car</string>
-    <string name="guide"> -> Go to the home page where you can see   multiple stations that are present.\n\n
--> Choose the station that is closest to you.\n\n
--> Next,you enter the date and timings for which you want to rent a car.\n\n
--> Dont forget to choose the type of car that you would like to rent.\n\n
--> Review your order and confirm to reserve your car.</string>
+    <string name="guide">Go to the home page where you can see   multiple stations that are present.\n\nChoose the station that is closest to you.\n\n
+Next,you enter the date and timings for which you want to rent a car.\n\n
+Dont forget to choose the type of car that you would like to rent.\n\n
+Review your order and confirm to reserve your car.</string>
 
 
     <!--payment details string values-->
@@ -64,6 +63,8 @@
     <string name="default_year">YYYY</string>
     <string name="input_error_date_year">Please enter a valid year</string>
     <string name="input_error_date_month">Please enter a valid month</string>
+    <string name="payment_exp_month_label">Exp. Month</string>
+    <string name="payment_exp_year_label">Exp. Year</string>
 
 
     <!--my account string values-->

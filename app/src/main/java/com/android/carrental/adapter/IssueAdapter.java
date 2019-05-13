@@ -1,15 +1,20 @@
 package com.android.carrental.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.carrental.PaymentMethods;
 import com.android.carrental.R;
+import com.android.carrental.help.HelpGuide;
 
 import java.util.List;
 
@@ -31,8 +36,20 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IssueAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull IssueAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.issue.setText(mIssues.get(i));
+        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mIssues.get(i).equals("Contact Customer Service")){
+                    mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "6193987953")));
+                }else if(mIssues.get(i).equals("Account and payment Options")) {
+                    mContext.startActivity(new Intent(mContext, PaymentMethods.class));
+                }else if (mIssues.get(i).equals("A guide to Rent a Car")){
+                    mContext.startActivity(new Intent(mContext, HelpGuide.class));
+                }
+            }
+        });
     }
 
     @Override
@@ -41,7 +58,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView issue;
-        RelativeLayout parentLayout;
+        LinearLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
