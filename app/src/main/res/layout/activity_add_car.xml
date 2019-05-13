@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
-            android:hint="Car Name" />
+            android:hint="@string/car_name_hint" />
 
         <EditText
             android:id="@+id/car_color"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
-            android:hint="Car Color" />
+            android:hint="@string/car_color_hint" />
 
         <EditText
             android:id="@+id/car_number"
@@ -37,7 +37,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
-            android:hint="Car Number" />
+            android:hint="@string/car_number_hint" />
 
         <EditText
             android:id="@+id/car_rate"
@@ -47,7 +47,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
-            android:hint="Car Rate" />
+            android:hint="@string/car_rate_hint" />
         
         <Spinner
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:layout_below="@+id/car_models_spinner"
             android:id="@+id/save_car"
             android:background="@color/colorPrimary"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />

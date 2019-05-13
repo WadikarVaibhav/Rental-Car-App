@@ -23,7 +23,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:gravity="left|center"
-                android:tint="@color/location"
+                android:tint="@color/black"
                 android:src="@drawable/ic_directions_car_black_24dp" />
 
             <LinearLayout
@@ -37,12 +37,14 @@
                     android:id="@+id/car_name"
                     android:layout_width="match_parent"
                     android:textSize="15sp"
+                    android:textColor="@color/black"
                     android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/car_color"
                     android:layout_width="match_parent"
                     android:textSize="15sp"
+                    android:textColor="@color/black"
                     android:layout_height="match_parent" />
 
             </LinearLayout>
@@ -52,6 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_gravity="center"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 

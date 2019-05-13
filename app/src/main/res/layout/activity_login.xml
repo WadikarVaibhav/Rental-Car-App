@@ -30,6 +30,7 @@
             android:layout_marginRight="10dp"
             android:hint="@string/email"
             android:text="manisha@gmail.com"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -42,6 +43,7 @@
             android:layout_marginRight="10dp"
             android:text="manisha"
             android:hint="@string/password"
+            android:textColor="@color/black"
             android:inputType="textPassword" />
 
         <Button

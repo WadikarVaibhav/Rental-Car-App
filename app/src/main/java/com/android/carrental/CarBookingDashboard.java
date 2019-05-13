@@ -26,7 +26,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
     private Button confirm_booking;
     private TextView rate;
     private TextView car_name;
-    private TextView car_color;
+    private TextView pickup;
     private TextView date;
     private TextView start_time;
     private TextView end_time;
@@ -37,13 +37,13 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_booking);
-        confirm_booking = (Button) findViewById(R.id.btn_confirm_booking);
-        rate = (TextView) findViewById(R.id.rate_for_booking);
-        car_name = (TextView) findViewById(R.id.car_name_for_booking);
-        car_color = (TextView) findViewById(R.id.car_color_for_booking);
-        date = (TextView) findViewById(R.id.date_for_booking);
-        start_time = (TextView) findViewById(R.id.start_time_for_booking);
-        end_time = (TextView) findViewById(R.id.end_time_for_booking);
+        confirm_booking = (Button) findViewById(R.id.btn_booking_confirmation);
+        rate = (TextView) findViewById(R.id.rate_on_booking_confirmation);
+        car_name = (TextView) findViewById(R.id.car_name_for_booking_confirmation);
+        date = (TextView) findViewById(R.id.date_on_booking_confirmation);
+        start_time = (TextView) findViewById(R.id.start_time_on_booking_confirmation);
+        end_time = (TextView) findViewById(R.id.end_time_on_booking_confirmation);
+        pickup = (TextView) findViewById(R.id.pickup_location_on_booking_confirmation);
         confirm_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Confirm Reservation");
         fetchSelectedCarDetails();
@@ -52,8 +52,8 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
     private void fetchSelectedCarDetails() {
         selectedCar = (Car) getIntent().getSerializableExtra("selectedCar");
         selectedStation = (Station) getIntent().getSerializableExtra("selectedStation");
-        car_name.setText(selectedCar.getName());
-        car_color.setText(selectedCar.getColor());
+        car_name.setText(selectedCar.getName() + " ("+selectedCar.getColor()+")");
+        pickup.setText(selectedStation.getAddress());
         date.setText(getIntent().getExtras().getString("selectedDate"));
         start_time.setText(getIntent().getExtras().getString("startTime"));
         end_time.setText(getIntent().getExtras().getString("endTime"));
