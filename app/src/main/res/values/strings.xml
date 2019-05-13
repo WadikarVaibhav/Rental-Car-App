@@ -7,7 +7,6 @@
     <string name="default_end_time">5:00 PM</string>
     <string name="default_date">26 Apr 19</string>
     <string name="search_cars">Search</string>
-    <string name="vehicle_filter">Vehicle Filter</string>
     <string name="all_type_cars">All Type Cars</string>
     <string name="rate_label">Rate</string>
     <string name="default_rate">$8</string>
@@ -45,6 +44,8 @@
     <string name="car_rate_hint">Car Rate</string>
     <string name="save">Save</string>
     <string name="all_types">All Types</string>
+    <string name="station_label">Station</string>
+    <string name="vehicle_type">Vehicle Type</string>
 
     <!--guide-->
     <string name="title_help">Guide to rent a car</string>

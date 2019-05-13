@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -71,7 +72,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         start_time_selector = (Button) findViewById(R.id.start_time);
         end_time_selector = (Button) findViewById(R.id.end_time);
         car_type_selector = (Button) findViewById(R.id.car_type_selector);
-        car_type = (TextView) findViewById(R.id.car_type);
+        car_type = (TextView) findViewById(R.id.car_type_selector);
         car_stations_spinner_filter = (Spinner) findViewById(R.id.car_stations_spinner_filter);
         stations = new ArrayList<>();
         calendar = Calendar.getInstance();
@@ -196,8 +197,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
                     Station station = snapshot.getValue(Station.class);
                     stations.add(station);
                 }
-                ArrayAdapter<Station> stationArrayAdapter = new ArrayAdapter<Station>(getApplicationContext(),
-                        android.R.layout.simple_spinner_dropdown_item, stations);
+                ArrayAdapter<Station> stationArrayAdapter = new ArrayAdapter<Station>(getApplicationContext(), R.layout.spinner, stations);
                 stationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 car_stations_spinner_filter.setAdapter(stationArrayAdapter);
                 setSelectedStation();
