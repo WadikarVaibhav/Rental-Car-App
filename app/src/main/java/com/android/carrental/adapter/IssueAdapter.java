@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.carrental.PaymentMethods;
 import com.android.carrental.R;
 import com.android.carrental.help.HelpGuide;
 import com.android.carrental.help.TripRefunds;
+import com.android.carrental.payment.PaymentMethod;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
                 else if(mIssues.get(i).equals("Contact Customer Service")){
                     mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "6193987953")));
                 }else if(mIssues.get(i).equals("Account and payment Options")) {
-                    mContext.startActivity(new Intent(mContext, PaymentMethods.class));
+                    mContext.startActivity(new Intent(mContext, PaymentMethod.class));
                 }else if (mIssues.get(i).equals("A guide to Rent a Car")){
                     mContext.startActivity(new Intent(mContext, HelpGuide.class));
                 }

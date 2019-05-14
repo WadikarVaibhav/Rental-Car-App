@@ -1,26 +1,13 @@
 package com.android.carrental.view;
 
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
 
-import com.android.carrental.MyAccount;
-import com.android.carrental.PaymentMethods;
 import com.android.carrental.R;
 import com.android.carrental.adapter.BookingsAdapter;
-import com.android.carrental.adapter.StationAdapter;
-import com.android.carrental.help.Help;
 import com.android.carrental.model.CarBooking;
-import com.android.carrental.model.Station;
-import com.android.carrental.userauth.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,8 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class MyBookings extends AppCompatActivity {

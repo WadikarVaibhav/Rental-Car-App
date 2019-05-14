@@ -13,7 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
 import com.android.carrental.MyAccount;
-import com.android.carrental.PaymentMethods;
+import com.android.carrental.payment.PaymentMethod;
 import com.android.carrental.help.Help;
 import com.android.carrental.R;
 import com.android.carrental.adapter.StationAdapter;
@@ -86,7 +86,7 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
                 startActivity(new Intent(NearbyStations.this, LoginActivity.class));
                 break;
             case R.id.payment_methods:
-                startActivity(new Intent(NearbyStations.this, PaymentMethods.class));
+                startActivity(new Intent(NearbyStations.this, PaymentMethod.class));
                 break;
             case R.id.nav_account:
                 startActivity(new Intent(NearbyStations.this, MyAccount.class));

@@ -1,6 +1,9 @@
 package com.android.carrental.model;
 
-public class CreditCard {
+import java.io.Serializable;
+
+public class CreditCard implements Serializable {
+
     String cardNumber;
     String cvv;
     String zipCode;
@@ -15,7 +18,7 @@ public class CreditCard {
         this.exp_year = exp_year;
     }
 
-    public CreditCard(){
+    public CreditCard() {
 
     }
 

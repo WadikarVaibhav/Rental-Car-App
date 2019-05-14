@@ -8,8 +8,16 @@ public class User {
     private final String zipCode;
     private final String email;
     private final String phoneNumber;
-    private final String CardId;
     private final String id;
+    private CreditCard creditCard;
+
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
+    }
+
+    public CreditCard getCreditCard () {
+        return this.creditCard;
+    }
 
     public String getName() {
         return name;
@@ -39,10 +47,6 @@ public class User {
         return phoneNumber;
     }
 
-    public String getCardId() {
-        return CardId;
-    }
-
     public String getId() {
         return id;
     }
@@ -56,7 +60,7 @@ public class User {
         this.email = "";
         this.id = "";
         this.phoneNumber = "";
-        this.CardId = "";
+        this.creditCard = null;
     }
 
     public User(String id, String cardId, String name, String email, String phoneNumber, String streetAddress, String aptNumber, String city, String zipCode) {
@@ -67,7 +71,7 @@ public class User {
         this.zipCode = zipCode;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        CardId = cardId;
+        this.creditCard = null;
         this.id = id;
     }
 }
