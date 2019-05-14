@@ -4,18 +4,17 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.carrental.model.Car;
 import com.android.carrental.model.CarBooking;
@@ -29,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,10 +85,42 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         selectedCarModel = new CarModel("All Types", "");
         getSupportActionBar().setTitle("Search Cars");
         fetchStations();
+        initFilterDetails();
+    }
+
+    private void initFilterDetails() {
+        String startTime = getTime(1);
+        if (startTime.equals("12.00 AM")) {
+            String date = getCurrentDate(1);
+            date_selector.setText(date);
+        } else {
+            String date = getCurrentDate(0);
+            date_selector.setText(date);
+        }
+        start_time_selector.setText(startTime);
+        String endTime = getTime(2);
+        end_time_selector.setText(endTime);
+        car_type_selector.setText(selectedCarModel.getName());
+    }
+
+    private String getTime(int step) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.HOUR, step);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        return formatTime(hour);
+    }
+
+    private String getCurrentDate(int step) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DAY_OF_MONTH, step);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        return formatDate(year, month, day);
     }
 
     private Station getSelectedStation() {
-        Station selectedStation =  (Station) getIntent().getSerializableExtra("selectedCarDetails");
+        Station selectedStation = (Station) getIntent().getSerializableExtra("selectedCarDetails");
         return selectedStation;
     }
 
@@ -113,14 +145,49 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    private int getTimeDifference() {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
+            Date d1 = df.parse(date_selector.getText().toString() + " " + start_time_selector.getText().toString());
+            Date d2 = df.parse(date_selector.getText().toString() + " " + end_time_selector.getText().toString());
+            int hoursDifference = (int) ((d2.getTime() - d1.getTime()) / 3600000L);
+            return hoursDifference;
+        } catch (Exception e) {
+            Log.i("exception", e.getMessage());
+        }
+        return 0;
+    }
+
     private void searchAvailableCars() {
-        Intent intent = new Intent(this, AvailableCars.class);
-        intent.putExtra("selectedStaion", selectedStation);
-        intent.putExtra("selectedDate", date_selector.getText().toString());
-        intent.putExtra("selectedStartTime", start_time_selector.getText().toString());
-        intent.putExtra("selectedEndTime", end_time_selector.getText().toString());
-        intent.putExtra("selectedCarModel", selectedCarModel);
-        startActivity(intent);
+        int timeDifference = getTimeDifference();
+        if (timeDifference > 0) {
+            if (isValidDate()) {
+                Intent intent = new Intent(this, AvailableCars.class);
+                intent.putExtra("selectedStaion", selectedStation);
+                intent.putExtra("selectedDate", date_selector.getText().toString());
+                intent.putExtra("selectedStartTime", start_time_selector.getText().toString());
+                intent.putExtra("selectedEndTime", end_time_selector.getText().toString());
+                intent.putExtra("selectedCarModel", selectedCarModel);
+                intent.putExtra("hoursBooked", timeDifference);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "Date must be now or later", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Start Time must be greater than End Time", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private boolean isValidDate() {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+            if (df.parse(date_selector.getText().toString()).before(df.parse(getCurrentDate(0)))) {
+                return false;
+            }
+        } catch (Exception e) {
+
+        }
+        return true;
     }
 
     private void selectCarType() {
@@ -144,7 +211,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 end_time_selector.setText(formatTime(hourOfDay));
             }
-        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.show();
     }
 
@@ -202,6 +269,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
                 car_stations_spinner_filter.setAdapter(stationArrayAdapter);
                 setSelectedStation();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

@@ -22,12 +22,13 @@ public class AvailableCarsAdapter extends RecyclerView.Adapter<AvailableCarsAdap
     private String endTime;
     private Station selectedStation;
     private String selectedDate;
+    private int hoursBooked;
     private Context context;
     private List<Car> availableCars;
     private Activity activity;
 
     public AvailableCarsAdapter(Context context, List<Car> availableCars, Activity activity, Station selectedStation, String selectedDate,
-                                String startTime, String endTime) {
+                                String startTime, String endTime, int hoursBooked) {
         this.availableCars = availableCars;
         this.context = context;
         this.selectedStation = selectedStation;
@@ -35,6 +36,7 @@ public class AvailableCarsAdapter extends RecyclerView.Adapter<AvailableCarsAdap
         this.endTime = endTime;
         this.selectedDate = selectedDate;
         this.activity = activity;
+        this.hoursBooked = hoursBooked;
     }
 
     @Override
@@ -61,10 +63,11 @@ public class AvailableCarsAdapter extends RecyclerView.Adapter<AvailableCarsAdap
         Intent intentToCarBooking = new Intent(activity, CarBookingDashboard.class);
         intentToCarBooking.putExtra("selectedStation", selectedStation);
         intentToCarBooking.putExtra("selectedCar", availableCar);
-        intentToCarBooking.putExtra("rate", availableCar.getRate());
+        intentToCarBooking.putExtra("rate", availableCar.getRate()*hoursBooked);
         intentToCarBooking.putExtra("startTime", startTime);
         intentToCarBooking.putExtra("endTime", endTime);
         intentToCarBooking.putExtra("selectedDate", selectedDate);
+        intentToCarBooking.putExtra("hoursBooked", hoursBooked);
         activity.startActivity(intentToCarBooking);
     }
 
