@@ -74,11 +74,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         final String aptNumber = editTextAptNumber.getText().toString().trim();
         final String city = editTextCity.getText().toString().trim();
         final String zipCode = editTextZipCode.getText().toString().trim();
-
-
         final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         final String phoneNumber = editTextPhoneNumber.getText().toString().trim();
+
         if (name.isEmpty()) {
             editTextFullName.setError(getString(R.string.input_error_name));
             editTextFullName.requestFocus();
@@ -134,7 +133,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),"INSIDE",Toast.LENGTH_SHORT).show();
                     String uid=mAuth.getCurrentUser().getUid();
                     User newUser = new User(uid,phoneNumber,name,email,phoneNumber,street_address,aptNumber,city,zipCode);
                     newUser.setCreditCard(creditCard);

@@ -56,8 +56,8 @@ public class PrePayment extends AppCompatActivity implements View.OnClickListene
         String zipCode = zip_code.getText().toString().trim();
         String monthString = exp_month.getText().toString().trim();
         String yearString = exp_year.getText().toString().trim();
-        if (cardNumber.isEmpty()) {
-            card_number.setError(getString(R.string.input_error));
+        if (cardNumber.isEmpty() && cardNumber.length() < 16 && cardNumber.length() > 16) {
+            card_number.setError("Enter 16 digit card number");
             card_number.requestFocus();
             return;
         }
