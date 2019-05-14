@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".help.HelpGuide"></activity>
+        <activity android:name=".payment.PrePayment"></activity>
+        <activity android:name=".help.HelpGuide" />
         <activity android:name=".view.MyBookingDetails" />
         <activity android:name=".view.MyBookings" />
         <activity android:name=".EditMyAccount" />
         <activity android:name=".MyAccount" />
-        <activity android:name=".PaymentMethods" />
+        <activity android:name=".payment.PaymentMethod" />
         <activity android:name=".CarBookingDashboard" />
         <activity android:name=".view.AvailableCars" />
         <activity android:name=".userauth.LoginActivity">

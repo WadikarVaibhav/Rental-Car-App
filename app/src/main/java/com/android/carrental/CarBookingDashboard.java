@@ -14,12 +14,16 @@ import com.android.carrental.model.Car;
 import com.android.carrental.model.CarBooking;
 import com.android.carrental.model.CarModel;
 import com.android.carrental.model.Station;
+import com.android.carrental.model.User;
 import com.android.carrental.view.MyBookings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CarBookingDashboard extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +36,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
     private TextView end_time;
     private Station selectedStation;
     private Car selectedCar;
+    private TextView card_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +49,14 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         start_time = (TextView) findViewById(R.id.start_time_on_booking_confirmation);
         end_time = (TextView) findViewById(R.id.end_time_on_booking_confirmation);
         pickup = (TextView) findViewById(R.id.pickup_location_on_booking_confirmation);
+        card_number = (TextView) findViewById(R.id.card_number);
         confirm_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Confirm Reservation");
         fetchSelectedCarDetails();
+        showPaymentDetails();
     }
+
+
 
     private void fetchSelectedCarDetails() {
         selectedCar = (Car) getIntent().getSerializableExtra("selectedCar");
@@ -73,10 +82,30 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         String id = databaseReference.push().getKey();
         databaseReference.child("bookings").child(id).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
+            public void onComplete(Task<Void> task) {
                 Toast.makeText(getApplicationContext(), "Booking Confirmed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MyBookings.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void showPaymentDetails() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    if (user.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                        card_number.setText("Card ends with " + user.getCreditCard().getCardNumber().substring(user.getCreditCard().getCardNumber().length() - 4));
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

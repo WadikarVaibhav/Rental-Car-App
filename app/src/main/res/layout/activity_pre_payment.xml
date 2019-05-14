@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/card_number_label"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -37,7 +36,7 @@
                 android:src="@drawable/ic_action_payment" />
 
             <EditText
-                android:id="@+id/card_number"
+                android:id="@+id/card_number_pre_payment"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="2dp"
@@ -57,7 +56,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/exp_date_label"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
@@ -86,7 +84,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/exp_month"
+                android:id="@+id/exp_month_pre_payment"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -98,7 +96,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/exp_year"
+                android:id="@+id/exp_year_pre_payment"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
@@ -112,7 +110,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/cvv"
+                android:id="@+id/cvv_pre_payment"
                 android:layout_width="70dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="140dp"
@@ -128,7 +126,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/zip_code_label"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
 
@@ -141,7 +138,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/zip_code"
+            android:id="@+id/zip_code_pre_payment"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="30dp"
@@ -155,7 +152,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/save_card_details"
+            android:id="@+id/save_card_details_pre_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

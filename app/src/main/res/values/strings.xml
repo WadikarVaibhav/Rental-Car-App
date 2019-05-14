@@ -46,6 +46,7 @@
     <string name="all_types">All Types</string>
     <string name="station_label">Station</string>
     <string name="vehicle_type">Vehicle Type</string>
+    <string name="payment_add_message">Add Payment</string>
 
     <!--guide-->
     <string name="title_help">Guide to rent a car</string>
