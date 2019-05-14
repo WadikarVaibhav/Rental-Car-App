@@ -17,6 +17,7 @@ public class CarBooking implements Serializable {
     private String endTime;
     private Car car;
     private int rate;
+    private int hoursBooked;
 
     public int getRate() {
         return rate;
@@ -26,7 +27,15 @@ public class CarBooking implements Serializable {
 
     }
 
-    public CarBooking(String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate) {
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public void setHoursBooked(int hoursBooked) {
+        this.hoursBooked = hoursBooked;
+    }
+
+    public CarBooking(String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate, int hoursBooked) {
         this.user = user;
         this.station = station;
         this.bookingDate = bookingDate;
@@ -34,6 +43,7 @@ public class CarBooking implements Serializable {
         this.endTime = endTime;
         this.car = car;
         this.rate = rate;
+        this.hoursBooked = hoursBooked;
     }
 
     public Car getCar() {

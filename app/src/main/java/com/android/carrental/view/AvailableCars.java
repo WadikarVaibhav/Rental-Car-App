@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +38,7 @@ public class AvailableCars extends AppCompatActivity {
     private String selectedDate;
     private String selectedStartTime;
     private String selectedEndTime;
+    private int hoursBooked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +57,10 @@ public class AvailableCars extends AppCompatActivity {
         selectedStation = (Station) getIntent().getSerializableExtra("selectedStaion");
         selectedCarModel = (CarModel) getIntent().getSerializableExtra("selectedCarModel");
         try {
-//            selectedDate = new SimpleDateFormat("dd MMM yyyy").parse(getIntent().getStringExtra("selectedDate"));
             selectedDate = getIntent().getStringExtra("selectedDate");
             selectedStartTime = getIntent().getStringExtra("selectedStartTime");
             selectedEndTime = getIntent().getStringExtra("selectedEndTime");
+            hoursBooked = getIntent().getIntExtra("hoursBooked", 1);
         } catch (Exception e) {
 
         }
@@ -70,7 +72,7 @@ public class AvailableCars extends AppCompatActivity {
         allCars = getAllCars();
         allCarBookings = getAllCarBookings();
         availableCars = new ArrayList<>();
-        availableCarsAdapter = new AvailableCarsAdapter(getApplicationContext(), availableCars, this, selectedStation, selectedDate, selectedStartTime, selectedEndTime);
+        availableCarsAdapter = new AvailableCarsAdapter(getApplicationContext(), availableCars, this, selectedStation, selectedDate, selectedStartTime, selectedEndTime, hoursBooked);
         availableCarsAdapter.notifyDataSetChanged();
         available_cars_recylerview.setAdapter(availableCarsAdapter);
     }
@@ -136,6 +138,8 @@ public class AvailableCars extends AppCompatActivity {
         }
         return availableCars;
     }
+
+
 
     private boolean isTimeConflict(String startTime, String endTime) {
         return false;

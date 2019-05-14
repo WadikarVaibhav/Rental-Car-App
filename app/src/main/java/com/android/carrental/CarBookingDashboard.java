@@ -67,7 +67,8 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         String endTime = getIntent().getExtras().getString("endTime");
         String date = getIntent().getExtras().getString("selectedDate");
         int rate = getIntent().getExtras().getInt("rate");
-        CarBooking carBooking = new CarBooking(user, selectedCar, selectedStation, date, startTime, endTime, rate);
+        int hoursBooked = getIntent().getExtras().getInt("hoursBooked");
+        CarBooking carBooking = new CarBooking(user, selectedCar, selectedStation, date, startTime, endTime, rate, hoursBooked);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         String id = databaseReference.push().getKey();
         databaseReference.child("bookings").child(id).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
