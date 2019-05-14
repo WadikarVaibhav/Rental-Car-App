@@ -18,8 +18,11 @@ import com.android.carrental.view.MyBookings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CarBookingDashboard extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,6 +65,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String startTime = getIntent().getExtras().getString("startTime");
         String endTime = getIntent().getExtras().getString("endTime");
