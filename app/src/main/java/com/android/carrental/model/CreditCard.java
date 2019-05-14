@@ -7,43 +7,40 @@ public class CreditCard implements Serializable {
     String cardNumber;
     String cvv;
     String zipCode;
-    String exp_month;
-    String exp_year;
+    String expMonth;
+    String expYear;
 
     public CreditCard(String cardNumber, String cvv, String zipCode, String exp_month, String exp_year) {
         this.cardNumber = cardNumber;
         this.cvv = cvv;
         this.zipCode = zipCode;
-        this.exp_month = exp_month;
-        this.exp_year = exp_year;
+        this.expMonth = exp_month;
+        this.expYear = exp_year;
     }
 
     public CreditCard() {
 
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getExpMonth() {
+        return expMonth;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public String getExpYear() {
+        return expYear;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
     }
 
     public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
-    }
-
     public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
 }
 
