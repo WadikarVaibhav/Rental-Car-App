@@ -16,6 +16,7 @@ import com.android.carrental.model.CarModel;
 import com.android.carrental.model.Station;
 import com.android.carrental.model.User;
 import com.android.carrental.view.MyBookings;
+import com.android.carrental.view.NearbyStations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,8 +86,11 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
             @Override
             public void onComplete(Task<Void> task) {
                 Toast.makeText(getApplicationContext(), "Booking Confirmed", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MyBookings.class);
+                Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
+
             }
         });
     }

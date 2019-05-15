@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
+import com.android.carrental.account.EditMyAccount;
 import com.android.carrental.account.MyAccount;
 import com.android.carrental.payment.PaymentMethod;
 import com.android.carrental.help.Help;
@@ -37,6 +38,7 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
     private RecyclerView recyclerView;
     private List<Station> stations;
     private StationAdapter stationAdapter;
+    private Intent intent;
 
 
     @Override
@@ -79,19 +81,25 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_help:
-                startActivity(new Intent(NearbyStations.this, Help.class));
+                 intent = new Intent(NearbyStations.this, Help.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(NearbyStations.this, LoginActivity.class));
-                break;
-            case R.id.payment_methods:
-                startActivity(new Intent(NearbyStations.this, PaymentMethod.class));
+                intent = new Intent(NearbyStations.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 break;
             case R.id.nav_account:
-                startActivity(new Intent(NearbyStations.this, MyAccount.class));
+                intent = new Intent(NearbyStations.this, MyAccount.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
             case R.id.my_bookings:
-                startActivity(new Intent(this, MyBookings.class));
+                intent = new Intent(this, MyBookings.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 break;
         }
         return false;
