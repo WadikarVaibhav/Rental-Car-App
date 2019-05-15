@@ -151,7 +151,7 @@
         android:layout_below="@+id/vehicle_type_details_on_filter"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/button_style"
         android:text="@string/search_cars"
         android:textColor="@color/white"
         android:textSize="18sp" />

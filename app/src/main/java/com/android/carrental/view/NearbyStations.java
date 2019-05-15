@@ -90,6 +90,7 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.nav_account:
                 startActivity(new Intent(NearbyStations.this, MyAccount.class));
+                break;
             case R.id.my_bookings:
                 startActivity(new Intent(this, MyBookings.class));
                 break;

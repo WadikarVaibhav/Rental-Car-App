@@ -92,6 +92,12 @@ public class AvailableCars extends AppCompatActivity {
                         }
                     }
                 }
+                Collections.sort(allCars, new Comparator<Car>() {
+                    @Override
+                    public int compare(Car car1, Car car2) {
+                        return Integer.compare(car1.getRate(), car2.getRate());
+                    }
+                });
                 availableCars = getAvailableCars();
                 availableCarsAdapter.notifyDataSetChanged();
             }

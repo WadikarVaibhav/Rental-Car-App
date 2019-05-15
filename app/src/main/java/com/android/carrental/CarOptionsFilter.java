@@ -94,7 +94,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             String date = getCurrentDate(1);
             date_selector.setText(date);
         } else {
-            String date = getCurrentDate(0);
+            String date = getCurrentDate(1);
             date_selector.setText(date);
         }
         start_time_selector.setText(startTime);

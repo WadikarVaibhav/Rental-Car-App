@@ -38,7 +38,7 @@ public class EditTripRefund extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_trip_refund);
-        car_model_image = (ImageView) findViewById(R.id.car_model_image);
+//        car_model_image = (ImageView) findViewById(R.id.car_model_image);
         car_name = (TextView) findViewById(R.id.car_name_booking_details);
         pickup_location = (TextView) findViewById(R.id.pickup_location_on_booking_details);
         start_time = (TextView) findViewById(R.id.start_time_on_booking_details);
