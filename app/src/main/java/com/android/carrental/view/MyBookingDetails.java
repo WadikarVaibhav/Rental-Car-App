@@ -38,7 +38,6 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         finish_booking.setOnClickListener(this);
         extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
-
         fetchDetailsForMyBooking();
     }
 

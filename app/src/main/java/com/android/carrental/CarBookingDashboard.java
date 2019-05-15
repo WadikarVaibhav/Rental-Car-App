@@ -71,6 +71,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String startTime = getIntent().getExtras().getString("startTime");
         String endTime = getIntent().getExtras().getString("endTime");

@@ -24,6 +24,7 @@ public class Help extends AppCompatActivity {
         mIssues.add("Trip Issues and Refunds");
         mIssues.add("Account and payment Options");
         mIssues.add("A guide to Rent a Car");
+        mIssues.add("Contact Customer Service");
         mRecyclerView = (RecyclerView)findViewById(R.id.IssuesDisplay);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

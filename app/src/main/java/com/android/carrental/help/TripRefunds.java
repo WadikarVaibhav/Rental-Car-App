@@ -1,4 +1,4 @@
-package com.android.carrental.view;
+package com.android.carrental.help;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.android.carrental.R;
 import com.android.carrental.adapter.BookingsAdapter;
+import com.android.carrental.adapter.TripsAdapter;
 import com.android.carrental.model.CarBooking;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -18,22 +19,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyBookings extends AppCompatActivity {
-
-    private RecyclerView bookings_recycler_view;
+public class TripRefunds extends AppCompatActivity {
+    private RecyclerView trips_recycler_view;
     private List<CarBooking> bookings;
-    private BookingsAdapter bookingsAdapter;
-
-
+    private TripsAdapter tripsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_bookings);
-        getSupportActionBar().setTitle("Recent Trips");
-        bookings_recycler_view = findViewById(R.id.bookings_recycler_view);
+        setContentView(R.layout.activity_history_refunds);
+        trips_recycler_view = findViewById(R.id.trips_recycler_view);
         initWidgets();
+        getSupportActionBar().setTitle("Trip History");
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -49,7 +46,7 @@ public class MyBookings extends AppCompatActivity {
                         bookings.add(booking);
                     }
                 }
-                bookingsAdapter.notifyDataSetChanged();
+                tripsAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -57,13 +54,12 @@ public class MyBookings extends AppCompatActivity {
             }
         });
     }
-
     private void initWidgets() {
-        bookings_recycler_view.setHasFixedSize(true);
-        bookings_recycler_view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        trips_recycler_view.setHasFixedSize(true);
+        trips_recycler_view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         bookings = new ArrayList<>();
-        bookingsAdapter = new BookingsAdapter(getApplicationContext(), bookings, this);
-        bookingsAdapter.notifyDataSetChanged();
-        bookings_recycler_view.setAdapter(bookingsAdapter);
+        tripsAdapter = new TripsAdapter(getApplicationContext(), bookings, this);
+        tripsAdapter.notifyDataSetChanged();
+        trips_recycler_view.setAdapter(tripsAdapter);
     }
 }

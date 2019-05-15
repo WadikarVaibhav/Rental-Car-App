@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".payment.PrePayment"></activity>
         <activity android:name=".help.HelpGuide" />
+        <activity android:name=".help.TripRefunds" />
         <activity android:name=".view.MyBookingDetails" />
         <activity android:name=".view.MyBookings" />
         <activity android:name=".account.EditMyAccount" />
@@ -33,6 +34,7 @@
         <activity android:name=".view.NearbyStations" />
         <activity android:name=".account.SignUpActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".help.Help" />
+        <activity android:name=".help.EditTripRefund"/>
     </application>
 
 </manifest>

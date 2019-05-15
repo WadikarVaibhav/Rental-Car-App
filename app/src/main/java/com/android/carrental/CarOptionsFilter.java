@@ -89,7 +89,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
     }
 
     private void initFilterDetails() {
-        String startTime = getTime(1);
+        String startTime = getCurrentTime(1);
         if (startTime.equals("12.00 AM")) {
             String date = getCurrentDate(1);
             date_selector.setText(date);
@@ -98,12 +98,12 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             date_selector.setText(date);
         }
         start_time_selector.setText(startTime);
-        String endTime = getTime(2);
+        String endTime = getCurrentTime(2);
         end_time_selector.setText(endTime);
         car_type_selector.setText(selectedCarModel.getName());
     }
 
-    private String getTime(int step) {
+    private String getCurrentTime(int step) {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.HOUR, step);
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -183,6 +183,11 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             DateFormat df = new SimpleDateFormat(DATE_FORMAT);
             if (df.parse(date_selector.getText().toString()).before(df.parse(getCurrentDate(0)))) {
                 return false;
+            } else if (df.parse(date_selector.getText().toString()).equals(df.parse(getCurrentDate(0)))){
+                DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
+                Date d1 = df.parse(date_selector.getText().toString() + " " + start_time_selector.getText().toString());
+                Date d2 = df.parse(date_selector.getText().toString() + " " + getCurrentTime(0));
+                return ((d1.getTime() - d2.getTime()) / 3600000L) > 0;
             }
         } catch (Exception e) {
 
