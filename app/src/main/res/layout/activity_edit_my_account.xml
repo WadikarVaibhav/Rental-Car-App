@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditMyAccount">
+    tools:context=".account.EditMyAccount">
     <LinearLayout
         android:id="@+id/name_on_my_account"
         android:layout_width="match_parent"

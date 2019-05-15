@@ -13,12 +13,12 @@
         <activity android:name=".help.HelpGuide" />
         <activity android:name=".view.MyBookingDetails" />
         <activity android:name=".view.MyBookings" />
-        <activity android:name=".EditMyAccount" />
-        <activity android:name=".MyAccount" />
+        <activity android:name=".account.EditMyAccount" />
+        <activity android:name=".account.MyAccount" />
         <activity android:name=".payment.PaymentMethod" />
         <activity android:name=".CarBookingDashboard" />
         <activity android:name=".view.AvailableCars" />
-        <activity android:name=".userauth.LoginActivity">
+        <activity android:name=".account.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +31,7 @@
         <activity android:name=".admin.AddCarModel" />
         <activity android:name=".admin.AddStation" />
         <activity android:name=".view.NearbyStations" />
-        <activity android:name=".userauth.SignUpActivity" />
+        <activity android:name=".account.SignUpActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".help.Help" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.android.carrental.userauth;
+package com.android.carrental.account;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.carrental.model.Station;
-import com.android.carrental.payment.PaymentMethod;
 import com.android.carrental.R;
 import com.android.carrental.model.CreditCard;
 import com.android.carrental.model.User;

@@ -71,7 +71,7 @@ public class PrePayment extends AppCompatActivity implements View.OnClickListene
             exp_year.requestFocus();
             return;
         }
-        if (monthString.length() != 2 && Integer.parseInt(monthString) < 13 && Integer.parseInt(monthString) > 0) {
+        if (Integer.parseInt(monthString) < 1 && Integer.parseInt(monthString) < 13) {
             exp_month.setError(getString(R.string.input_error_date_month));
             exp_month.requestFocus();
             return;

@@ -12,13 +12,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
-import com.android.carrental.MyAccount;
+import com.android.carrental.account.MyAccount;
 import com.android.carrental.payment.PaymentMethod;
 import com.android.carrental.help.Help;
 import com.android.carrental.R;
 import com.android.carrental.adapter.StationAdapter;
 import com.android.carrental.model.Station;
-import com.android.carrental.userauth.LoginActivity;
+import com.android.carrental.account.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

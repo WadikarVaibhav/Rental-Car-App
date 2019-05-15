@@ -1,4 +1,4 @@
-package com.android.carrental.userauth;
+package com.android.carrental.account;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.carrental.R;
-import com.android.carrental.view.MyBookings;
 import com.android.carrental.view.NearbyStations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
