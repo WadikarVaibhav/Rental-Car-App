@@ -169,7 +169,6 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
                 intent.putExtra("selectedEndTime", end_time_selector.getText().toString());
                 intent.putExtra("selectedCarModel", selectedCarModel);
                 intent.putExtra("hoursBooked", timeDifference);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             } else {
                 Toast.makeText(getApplicationContext(), "Date must be now or later", Toast.LENGTH_LONG).show();

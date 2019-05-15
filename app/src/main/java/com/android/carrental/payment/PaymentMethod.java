@@ -144,7 +144,6 @@ public class PaymentMethod extends AppCompatActivity implements View.OnClickList
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Card Details Updated Successfully", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                     finish();
                                 } else {

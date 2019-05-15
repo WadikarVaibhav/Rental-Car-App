@@ -16,7 +16,11 @@ import com.android.carrental.view.NearbyStations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EditMyAccount extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,30 +68,47 @@ public class EditMyAccount extends AppCompatActivity implements View.OnClickList
     }
 
     private void saveUserDetials() {
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        final User newUser = new User(uid,
-                editTextPhoneNumber.getText().toString().trim(),
-                editTextName.getText().toString().trim(),
-                editTextEmail.getText().toString().trim(),
-                editTextPhoneNumber.getText().toString().trim(),
-                editTextStreetAddress.getText().toString().trim(),
-                editTextAptNumber.getText().toString().trim(),
-                editTextCity.getText().toString().trim(),
-                editTextZipCode.getText().toString().trim());
-        FirebaseDatabase.getInstance().getReference("users")
-                .child(uid)
-                .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    if (user.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                        final User newUser = new User(user.getId(),
+                                editTextPhoneNumber.getText().toString().trim(),
+                                editTextName.getText().toString().trim(),
+                                editTextEmail.getText().toString().trim(),
+                                editTextPhoneNumber.getText().toString().trim(),
+                                editTextStreetAddress.getText().toString().trim(),
+                                editTextAptNumber.getText().toString().trim(),
+                                editTextCity.getText().toString().trim(),
+                                editTextZipCode.getText().toString().trim());
+                        User user1 = user;
+                        newUser.setCreditCard(user.getCreditCard());
+                        FirebaseDatabase.getInstance().getReference("users")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                        break;
+                    }
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

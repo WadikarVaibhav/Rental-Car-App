@@ -18,6 +18,15 @@ public class CarBooking implements Serializable {
     private Car car;
     private int rate;
     private int hoursBooked;
+    private boolean tripStatus;
+
+    public boolean isTripStatus() {
+        return tripStatus;
+    }
+
+    public void setTripStatus(boolean tripStatus) {
+        this.tripStatus = tripStatus;
+    }
 
     public int getRate() {
         return rate;
@@ -44,6 +53,7 @@ public class CarBooking implements Serializable {
         this.car = car;
         this.rate = rate;
         this.hoursBooked = hoursBooked;
+        this.tripStatus = false;
     }
 
     public Car getCar() {

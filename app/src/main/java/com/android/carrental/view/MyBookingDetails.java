@@ -1,11 +1,13 @@
 package com.android.carrental.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.carrental.R;
 import com.android.carrental.model.CarBooking;
@@ -21,6 +23,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     private TextView total_fare;
     private Button finish_booking;
     private Button extend_booking;
+    CarBooking carBooking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +41,31 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         finish_booking.setOnClickListener(this);
         extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
+        carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
         fetchDetailsForMyBooking();
+
     }
 
     private void fetchDetailsForMyBooking() {
-        CarBooking carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
         car_name.setText(carBooking.getCar().getName());
         pickup_location.setText(carBooking.getStation().getAddress());
         start_time.setText(carBooking.getStartTime());
         end_time.setText(carBooking.getEndTime());
-        total_fare.setText(carBooking.getRate()+"");
+        total_fare.setText(carBooking.getRate() + "");
         date.setText(carBooking.getBookingDate());
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.finish_trip:
+                carBooking.setTripStatus(true);
+                Toast.makeText(getApplicationContext(), "Trip finished", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, NearbyStations.class));
+                finish();
+                break;
+            case R.id.extend_trip:
+        }
 
     }
 }
