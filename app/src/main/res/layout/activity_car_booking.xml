@@ -22,6 +22,7 @@
             android:layout_gravity="left|center"
             android:layout_weight="1"
             android:scaleType="fitStart"
+            android:tint="@color/colorPrimary"
             android:src="@drawable/ic_directions_car_black_24dp" />
 
         <TextView
@@ -210,7 +211,7 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/button_style"
             android:text="@string/confirm_reservation"
             android:textColor="#ffffff"
             android:textSize="17sp"

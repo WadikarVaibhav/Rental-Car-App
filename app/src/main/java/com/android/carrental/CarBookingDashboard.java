@@ -67,7 +67,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         date.setText(getIntent().getExtras().getString("selectedDate"));
         start_time.setText(getIntent().getExtras().getString("startTime"));
         end_time.setText(getIntent().getExtras().getString("endTime"));
-        rate.setText(getIntent().getExtras().getInt("rate")+"");
+        rate.setText("$"+getIntent().getExtras().getInt("rate")+"");
     }
 
     @Override
