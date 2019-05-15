@@ -47,7 +47,7 @@
     <string name="station_label">Station</string>
     <string name="vehicle_type">Vehicle Type</string>
 
-    <string name="issue_label">Briefly write about issue</string>
+    <string name="issue_label">Issue</string>
     <string name="submit_label">SUBMIT</string>
 =======
     <string name="payment_add_message">Add Payment</string>
