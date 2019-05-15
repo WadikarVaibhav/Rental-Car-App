@@ -90,17 +90,24 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
 
     private void initFilterDetails() {
         String startTime = getCurrentTime(1);
-        if (startTime.equals("12.00 AM")) {
+        if (startTime.equals("12:00 AM")) {
             String date = getCurrentDate(1);
             date_selector.setText(date);
         } else {
-            String date = getCurrentDate(1);
+            String date = getCurrentDate(0);
             date_selector.setText(date);
         }
         start_time_selector.setText(startTime);
         String endTime = getCurrentTime(2);
+        if (endTime.equals("12:00 AM")) {
+            endTime = modifiedEndTime();
+        }
         end_time_selector.setText(endTime);
         car_type_selector.setText(selectedCarModel.getName());
+    }
+
+    private String modifiedEndTime() {
+        return "11:59 PM";
     }
 
     private String getCurrentTime(int step) {
@@ -151,6 +158,9 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             Date d1 = df.parse(date_selector.getText().toString() + " " + start_time_selector.getText().toString());
             Date d2 = df.parse(date_selector.getText().toString() + " " + end_time_selector.getText().toString());
             int hoursDifference = (int) ((d2.getTime() - d1.getTime()) / 3600000L);
+            if (end_time_selector.getText().toString().equals(modifiedEndTime())) {
+                hoursDifference += 1;
+            }
             return hoursDifference;
         } catch (Exception e) {
             Log.i("exception", e.getMessage());
@@ -183,11 +193,6 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             DateFormat df = new SimpleDateFormat(DATE_FORMAT);
             if (df.parse(date_selector.getText().toString()).before(df.parse(getCurrentDate(0)))) {
                 return false;
-            } else if (df.parse(date_selector.getText().toString()).equals(df.parse(getCurrentDate(0)))){
-                DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
-                Date d1 = df.parse(date_selector.getText().toString() + " " + start_time_selector.getText().toString());
-                Date d2 = df.parse(date_selector.getText().toString() + " " + getCurrentTime(0));
-                return ((d1.getTime() - d2.getTime()) / 3600000L) > 0;
             }
         } catch (Exception e) {
 
@@ -214,7 +219,11 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                end_time_selector.setText(formatTime(hourOfDay));
+                String endTime = formatTime(hourOfDay);
+                if (endTime.equals("12:00 AM")) {
+                    endTime = modifiedEndTime();
+                }
+                end_time_selector.setText(endTime);
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.show();

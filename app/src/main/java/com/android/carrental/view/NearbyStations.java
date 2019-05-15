@@ -81,7 +81,7 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_help:
-                 intent = new Intent(NearbyStations.this, Help.class);
+                intent = new Intent(NearbyStations.this, Help.class);
                 startActivity(intent);
                 break;
             case R.id.nav_logout:

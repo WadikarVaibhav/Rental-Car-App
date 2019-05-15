@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment.PrePayment"></activity>
+        <activity android:name=".view.ExtendTrip"></activity>
+        <activity android:name=".payment.PrePayment" />
         <activity android:name=".help.HelpGuide" />
         <activity android:name=".help.TripRefunds" />
         <activity android:name=".view.MyBookingDetails" />
@@ -32,9 +33,11 @@
         <activity android:name=".admin.AddCarModel" />
         <activity android:name=".admin.AddStation" />
         <activity android:name=".view.NearbyStations" />
-        <activity android:name=".account.SignUpActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".account.SignUpActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".help.Help" />
-        <activity android:name=".help.EditTripRefund"/>
+        <activity android:name=".help.EditTripRefund" />
     </application>
 
 </manifest>

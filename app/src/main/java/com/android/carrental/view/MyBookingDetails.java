@@ -51,7 +51,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
-        if(carBooking.isComplete()){
+        if (carBooking.isComplete()) {
             finish_booking.setVisibility(View.GONE);
             extend_booking.setVisibility(View.GONE);
         }
@@ -75,6 +75,10 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
                 finishTrip();
                 break;
             case R.id.extend_trip:
+                Intent intent = new Intent(this, ExtendTrip.class);
+                intent.putExtra("booking", carBooking);
+                startActivity(intent);
+                break;
         }
     }
 

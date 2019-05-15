@@ -20,6 +20,10 @@ public class CarBooking implements Serializable {
     private int hoursBooked;
     private boolean isComplete;
 
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
     public String getId() {
         return id;
     }

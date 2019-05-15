@@ -42,7 +42,6 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
     @Override
     public void onBindViewHolder(BookingsViewHolder bookingsViewHolder, int i) {
         final CarBooking booking = bookings.get(i);
-        Log.i("BOOKSTATUS:"+booking.getClass(),""+bookings.get(i).isComplete());
         bookingsViewHolder.booked_car.setText(booking.getCar().getName());
         bookingsViewHolder.booking_date.setText(booking.getBookingDate());
         bookingsViewHolder.booking_status.setImageResource(getStatus(booking.isComplete()));
