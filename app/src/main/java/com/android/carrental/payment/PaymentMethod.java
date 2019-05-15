@@ -53,9 +53,9 @@ public class PaymentMethod extends AppCompatActivity implements View.OnClickList
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
                     if (user.getId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                        card_number.setText(user.getCreditCard().getCardNumber() );
-                        zip_code.setText(user.getCreditCard().getZipCode() );
-                        editTextCvv.setText(user.getCreditCard().getCvv() );
+                        card_number.setText(user.getCreditCard().getCardNumber());
+                        zip_code.setText(user.getCreditCard().getZipCode());
+                        editTextCvv.setText(user.getCreditCard().getCvv());
                         exp_month.setText(user.getCreditCard().getExpMonth());
                         exp_year.setText(user.getCreditCard().getExpYear());
                         break;
@@ -85,7 +85,8 @@ public class PaymentMethod extends AppCompatActivity implements View.OnClickList
         String zipCode = zip_code.getText().toString().trim();
         String monthString = exp_month.getText().toString().trim();
         String yearString = exp_year.getText().toString().trim();
-        if (cardNumber.isEmpty()) {
+
+        if (cardNumber.isEmpty() && cardNumber.length() < 16 && cardNumber.length() > 16) {
             card_number.setError(getString(R.string.input_error));
             card_number.requestFocus();
             return;
@@ -100,7 +101,7 @@ public class PaymentMethod extends AppCompatActivity implements View.OnClickList
             exp_year.requestFocus();
             return;
         }
-        if (monthString.length() != 2 && Integer.parseInt(monthString) < 13 && Integer.parseInt(monthString) > 0) {
+        if (Integer.parseInt(monthString) < 1 && Integer.parseInt(monthString) < 13) {
             exp_month.setError(getString(R.string.input_error_date_month));
             exp_month.requestFocus();
             return;
