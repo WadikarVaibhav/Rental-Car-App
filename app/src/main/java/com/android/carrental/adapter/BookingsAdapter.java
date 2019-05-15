@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
     @Override
     public void onBindViewHolder(BookingsViewHolder bookingsViewHolder, int i) {
         final CarBooking booking = bookings.get(i);
+        Log.i("BOOKSTATUS:"+booking.getClass(),""+bookings.get(i).isComplete());
         bookingsViewHolder.booked_car.setText(booking.getCar().getName());
         bookingsViewHolder.booking_date.setText(booking.getBookingDate());
         bookingsViewHolder.booking_status.setImageResource(getStatus(booking.isComplete()));

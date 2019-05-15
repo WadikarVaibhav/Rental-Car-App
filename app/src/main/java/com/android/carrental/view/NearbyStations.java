@@ -83,23 +83,19 @@ public class NearbyStations extends AppCompatActivity implements NavigationView.
             case R.id.nav_help:
                  intent = new Intent(NearbyStations.this, Help.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 intent = new Intent(NearbyStations.this, LoginActivity.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.nav_account:
                 intent = new Intent(NearbyStations.this, MyAccount.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.my_bookings:
                 intent = new Intent(this, MyBookings.class);
                 startActivity(intent);
-                finish();
                 break;
         }
         return false;

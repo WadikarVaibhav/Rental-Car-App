@@ -1,8 +1,10 @@
 package com.android.carrental.view;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,13 @@ import android.widget.Toast;
 
 import com.android.carrental.R;
 import com.android.carrental.model.CarBooking;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MyBookingDetails extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,6 +51,10 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
+        if(carBooking.isComplete()){
+            finish_booking.setVisibility(View.GONE);
+            extend_booking.setVisibility(View.GONE);
+        }
         fetchDetailsForMyBooking();
 
     }
@@ -59,13 +72,40 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.finish_trip:
-                carBooking.setComplete(true);
-                Toast.makeText(getApplicationContext(), "Trip finished", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, NearbyStations.class));
-                finish();
+                finishTrip();
                 break;
             case R.id.extend_trip:
         }
+    }
 
+    private void finishTrip() {
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("bookings");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    CarBooking booking = snapshot.getValue(CarBooking.class);
+                    if (carBooking.getId().equals(booking.getId())) {
+                        carBooking.setComplete(true);
+                        databaseReference.child(booking.getId()).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                Toast.makeText(getApplicationContext(), "Thankyou", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
