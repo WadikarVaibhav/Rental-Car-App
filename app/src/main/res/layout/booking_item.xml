@@ -16,24 +16,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card_border"
-            android:weightSum="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-            <TextView
+            <ImageView
                 android:layout_width="0dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="left|center"
-                android:layout_marginLeft="3dp"
-                android:id="@+id/booking_date"/>
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="right|center"
+                android:src="@drawable/ic_directions_car_black_24dp"/>
+
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="2"
                 android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:gravity="center"
-                android:weightSum="2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/booking_station"
@@ -53,14 +54,32 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/booking_status"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="right|center"
                 android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:layout_weight="2"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/booking_status"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.5"
+                    android:tint="@color/colorPrimary"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/booking_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="top|center" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

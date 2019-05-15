@@ -59,7 +59,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.finish_trip:
-                carBooking.setTripStatus(true);
+                carBooking.setComplete(true);
                 Toast.makeText(getApplicationContext(), "Trip finished", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, NearbyStations.class));
                 finish();
