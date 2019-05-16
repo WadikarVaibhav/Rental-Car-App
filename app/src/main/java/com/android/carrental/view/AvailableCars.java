@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.carrental.R;
 import com.android.carrental.adapter.AvailableCarsAdapter;
@@ -27,10 +28,8 @@ import java.util.List;
 public class AvailableCars extends AppCompatActivity {
 
     private RecyclerView available_cars_recylerview;
-    private List<Car> availableCars;
     private AvailableCarsAdapter availableCarsAdapter;
     private List<Car> allCarsInSelectedStation;
-    private List<CarBooking> allCarBookings;
     private Station selectedStation;
     private CarModel selectedCarModel;
     private String selectedDate;
@@ -44,8 +43,6 @@ public class AvailableCars extends AppCompatActivity {
         setContentView(R.layout.activity_available_cars);
         available_cars_recylerview = findViewById(R.id.recycler_view_available_cars);
         allCarsInSelectedStation = new ArrayList<>();
-        allCarBookings = new ArrayList<>();
-        availableCars = new ArrayList<>();
         getUserSelectedData();
         getSupportActionBar().setTitle("Available Cars");
         initWidgets();
@@ -64,9 +61,7 @@ public class AvailableCars extends AppCompatActivity {
         available_cars_recylerview.setHasFixedSize(true);
         available_cars_recylerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         allCarsInSelectedStation = getAllCarsInSelectedStation();
-        allCarBookings = getAllCarBookings();
-        availableCars = new ArrayList<>();
-        availableCarsAdapter = new AvailableCarsAdapter(getApplicationContext(), availableCars, this, selectedStation, selectedDate, selectedStartTime, selectedEndTime, hoursBooked);
+        availableCarsAdapter = new AvailableCarsAdapter(getApplicationContext(), allCarsInSelectedStation, this, selectedStation, selectedDate, selectedStartTime, selectedEndTime, hoursBooked);
         availableCarsAdapter.notifyDataSetChanged();
         available_cars_recylerview.setAdapter(availableCarsAdapter);
     }
@@ -92,7 +87,6 @@ public class AvailableCars extends AppCompatActivity {
                         return Integer.compare(car1.getRate(), car2.getRate());
                     }
                 });
-                availableCars = getAvailableCars();
                 availableCarsAdapter.notifyDataSetChanged();
             }
 
@@ -104,75 +98,5 @@ public class AvailableCars extends AppCompatActivity {
         return allCarsInSelectedStation;
     }
 
-    private List<CarBooking> getAllCarBookings() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("bookings");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    CarBooking carBooking = snapshot.getValue(CarBooking.class);
-                    allCarBookings.add(carBooking);
-                }
-                availableCarsAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        return allCarBookings;
-    }
-
-    private List<Car> getAvailableCars() {
-
-        for (Car car : allCarsInSelectedStation) {
-            availableCars.add(car);
-            for (CarBooking booking : allCarBookings) {
-                availableCars.add(car);
-                if (isCarAvailable(car, booking)) {
-                    availableCars.add(car);
-                }
-            }
-        }
-        return allCarsInSelectedStation;
-    }
-
-    private boolean isCarAvailable(Car car, CarBooking booking) {
-        if (booking.getCar().getName().equals(car.getName())) {
-            return true;
-//            if (booking.getBookingDate().equals(selectedDate)) {
-//                return true;
-////                return !isTimeConflict(booking.getStartTime(), booking.getEndTime());
-//            }
-        }
-        return true;
-    }
-
-    private Date parseTime(String time) {
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
-            return simpleDateFormat.parse(time);
-        } catch (Exception e) {
-
-        }
-        return null;
-    }
-
-//    private boolean isTimeConflict(String bookingStartTime, String bookingEndTime) {
-//
-//        try {
-//            if (parseTime(bookingStartTime).after(parseTime(selectedStartTime)) && parseTime(bookingEndTime).after(parseTime(selectedEndTime))) {
-//                return false;
-//            } else if (parseTime(bookingStartTime).before(parseTime(selectedStartTime)) && parseTime(bookingEndTime).after(parseTime(selectedEndTime))) {
-//                return false;
-//            } else if (parseTime(bookingStartTime).before(parseTime(selectedStartTime)) && parseTime(bookingEndTime).before(parseTime(selectedEndTime))
-//                    && parseTime(selectedEndTime).after(parseTime(bookingStartTime))) {
-//                return false;
-//            }
-//        } catch (Exception e) {
-//
-//        }
-//        return false;
-//    }
 }

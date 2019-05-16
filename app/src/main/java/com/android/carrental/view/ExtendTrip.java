@@ -102,6 +102,7 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
                         CarBooking carBooking = snapshot.getValue(CarBooking.class);
                         if(carSelected.getId().equals(carBooking.getId())){
                             CarBooking newBooking = carBooking;
+                            newBooking.setRate(newBooking.getRate() + getRate());
                             newBooking.setEndTime(end_time.getText().toString().trim());
                             databaseReference.child(newBooking.getId()).setValue(carBooking).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -139,6 +140,22 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
                 hoursDifference += 1;
             }
             return hoursDifference;
+        } catch (Exception e) {
+            Log.i("exception", e.getMessage());
+        }
+        return 0;
+    }
+
+    private int getRate() {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
+            Date d1 = df.parse(carSelected.getBookingDate() + " " + carSelected.getEndTime());
+            Date d2 = df.parse(carSelected.getBookingDate() + " " + end_time.getText().toString());
+            int hoursDifference = (int) ((d2.getTime() - d1.getTime()) / 3600000L);
+            if (end_time.getText().toString().equals(modifiedEndTime())) {
+                hoursDifference += 1;
+            }
+            return hoursDifference * carSelected.getRate();
         } catch (Exception e) {
             Log.i("exception", e.getMessage());
         }

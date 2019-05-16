@@ -21,6 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MyBookingDetails extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView car_model_image;
@@ -33,12 +38,17 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     private Button finish_booking;
     private Button extend_booking;
     CarBooking carBooking;
+    private static final String AM = "AM";
+    private static final String PM = "PM";
+    private static String TIME_AM_PM = "";
+    private static final String TIME_SEPARATOR = ":00";
+    private static final String TIME_DIVIDER = "12";
+    public static final String DATE_FORMAT = "dd MMM yyyy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_booking_details);
-//        car_model_image = (ImageView) findViewById(R.id.car_model_image);
         car_name = (TextView) findViewById(R.id.car_name_booking_details);
         pickup_location = (TextView) findViewById(R.id.pickup_location_on_booking_details);
         start_time = (TextView) findViewById(R.id.start_time_on_booking_details);
@@ -51,7 +61,11 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
-        if (carBooking.isComplete()) {
+        if(getTimeDifference() < 0 || isCancel()){
+            finish_booking.setText("CANCEL");
+        }
+
+            if (carBooking.isComplete()) {
             finish_booking.setVisibility(View.GONE);
             extend_booking.setVisibility(View.GONE);
         }
@@ -99,7 +113,6 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
-
                             }
                         });
                     }
@@ -111,5 +124,67 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
 
             }
         });
+    }
+    private String getCurrentTime(int step) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.HOUR, step);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        return formatTime(hour);
+    }
+    private String formatTime(int hour) {
+        Calendar datetime = Calendar.getInstance();
+        datetime.set(Calendar.HOUR_OF_DAY, hour);
+        if (datetime.get(Calendar.AM_PM) == Calendar.AM)
+            TIME_AM_PM = AM;
+        else if (datetime.get(Calendar.AM_PM) == Calendar.PM)
+            TIME_AM_PM = PM;
+        String strHrsToShow = (datetime.get(Calendar.HOUR) == 0) ? TIME_DIVIDER : datetime.get(Calendar.HOUR) + "";
+        return strHrsToShow + TIME_SEPARATOR + " " + TIME_AM_PM;
+    }
+    private int getTimeDifference() {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
+            Date d1 = df.parse(carBooking.getBookingDate() + " " + carBooking.getStartTime());
+            Date d2 = df.parse(carBooking.getBookingDate() + " " + getCurrentTime(0));
+            int hoursDifference = (int) ((d2.getTime() - d1.getTime()) / 3600000L);
+
+            if (getCurrentTime(0).equals(modifiedEndTime())) {
+                hoursDifference += 1;
+            }
+            return hoursDifference;
+        } catch (Exception e) {
+            Log.i("exception", e.getMessage());
+        }
+        return 0;
+    }
+    private String modifiedEndTime() {
+        return "11:59 PM";
+    }
+    private String getCurrentDate(int step) {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DAY_OF_MONTH, step);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        return formatDate(year, month, day);
+    }
+    private static String formatDate(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        cal.set(year, month, day);
+        Date date = cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        return sdf.format(date);
+    }
+    private boolean isCancel() {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+            if ((df.parse(carBooking.getBookingDate())).before(df.parse(getCurrentDate(0)))) {
+                return false;
+            }
+        } catch (Exception e) {
+
+        }
+        return true;
     }
 }

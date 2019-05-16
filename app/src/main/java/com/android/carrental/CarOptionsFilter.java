@@ -104,6 +104,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         }
         end_time_selector.setText(endTime);
         car_type_selector.setText(selectedCarModel.getName());
+
     }
 
     private String modifiedEndTime() {
@@ -211,7 +212,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 start_time_selector.setText(formatTime(hourOfDay));
             }
-        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
+        }, Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), false);
         timePickerDialog.show();
     }
 
@@ -236,6 +237,7 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
                 date_selector.setText(formatDate(year, month, dayOfMonth));
             }
         }, calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
+        datePickerDialog.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
 
@@ -247,7 +249,6 @@ public class CarOptionsFilter extends AppCompatActivity implements View.OnClickL
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         return sdf.format(date);
     }
-
 
     private String formatTime(int hour) {
         Calendar datetime = Calendar.getInstance();
