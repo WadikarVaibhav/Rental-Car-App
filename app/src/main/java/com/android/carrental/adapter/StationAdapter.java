@@ -36,7 +36,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationV
         final Station station = stations.get(i);
         stationViewHolder.station_address.setText(station.getAddress());
         stationViewHolder.station_city_and_state.setText(station.getCity().concat(SEPARATOR).concat(station.getState()));
-        stationViewHolder.station_distance.setText(station.getDistance()+"");
+        stationViewHolder.station_distance.setText(station.getDistance() + "");
         stationViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationV
         });
     }
 
-    private void openSelectedStationDetails(Station station){
+    private void openSelectedStationDetails(Station station) {
         Intent intent = new Intent(context, CarOptionsFilter.class);
         intent.putExtra("selectedCarDetails", station);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

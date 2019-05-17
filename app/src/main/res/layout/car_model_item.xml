@@ -30,8 +30,8 @@
             <TextView
                 android:id="@+id/car_model_name"
                 android:layout_width="0dp"
-                android:layout_weight="3"
                 android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:gravity="left|center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

@@ -17,7 +17,7 @@ import com.android.carrental.view.MyBookingDetails;
 
 import java.util.List;
 
-public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsViewHolder>{
+public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsViewHolder> {
     private Context context;
     private List<CarBooking> bookings;
     private Activity activity;
@@ -48,6 +48,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsView
             }
         });
     }
+
     private int getStatus(boolean isComplete) {
         if (isComplete) {
             return R.drawable.ic_check_black_24dp;

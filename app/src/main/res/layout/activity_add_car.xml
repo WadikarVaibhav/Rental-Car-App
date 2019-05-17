@@ -48,29 +48,29 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             android:hint="@string/car_rate_hint" />
-        
+
         <Spinner
+            android:id="@+id/car_stations_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/car_rate"
-            android:id="@+id/car_stations_spinner">
+            android:layout_below="@+id/car_rate">
 
         </Spinner>
 
         <Spinner
+            android:id="@+id/car_models_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/car_stations_spinner"
-            android:id="@+id/car_models_spinner">
+            android:layout_below="@+id/car_stations_spinner">
 
         </Spinner>
 
 
         <Button
+            android:id="@+id/save_car"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/car_models_spinner"
-            android:id="@+id/save_car"
             android:background="@color/colorPrimary"
             android:text="@string/save"
             android:textColor="#ffffff"

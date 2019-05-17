@@ -50,7 +50,7 @@ public class AvailableCarsAdapter extends RecyclerView.Adapter<AvailableCarsAdap
         final Car availableCar = availableCars.get(i);
         availableCarViewHolder.car_name.setText(availableCar.getName());
         availableCarViewHolder.car_color.setText(availableCar.getColor());
-        availableCarViewHolder.cost_per_hour.setText("$"+availableCar.getRate()+"/hr");
+        availableCarViewHolder.cost_per_hour.setText("$" + availableCar.getRate() + "/hr");
         availableCarViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class AvailableCarsAdapter extends RecyclerView.Adapter<AvailableCarsAdap
         Intent intentToCarBooking = new Intent(activity, CarBookingDashboard.class);
         intentToCarBooking.putExtra("selectedStation", selectedStation);
         intentToCarBooking.putExtra("selectedCar", availableCar);
-        intentToCarBooking.putExtra("rate", availableCar.getRate()*hoursBooked);
+        intentToCarBooking.putExtra("rate", availableCar.getRate() * hoursBooked);
         intentToCarBooking.putExtra("startTime", startTime);
         intentToCarBooking.putExtra("endTime", endTime);
         intentToCarBooking.putExtra("selectedDate", selectedDate);

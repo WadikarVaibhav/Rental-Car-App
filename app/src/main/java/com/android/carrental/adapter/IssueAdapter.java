@@ -31,7 +31,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.help_item,viewGroup,false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.help_item, viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -41,14 +41,13 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mIssues.get(i).equals("Trip Issues and Refunds")){
+                if (mIssues.get(i).equals("Trip Issues and Refunds")) {
                     mContext.startActivity(new Intent(mContext, TripRefunds.class));
-                }
-                else if(mIssues.get(i).equals("Contact Customer Service")){
+                } else if (mIssues.get(i).equals("Contact Customer Service")) {
                     mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "6193987953")));
-                }else if(mIssues.get(i).equals("Account and payment Options")) {
+                } else if (mIssues.get(i).equals("Account and payment Options")) {
                     mContext.startActivity(new Intent(mContext, PaymentMethod.class));
-                }else if (mIssues.get(i).equals("A guide to Rent a Car")){
+                } else if (mIssues.get(i).equals("A guide to Rent a Car")) {
                     mContext.startActivity(new Intent(mContext, HelpGuide.class));
                 }
             }
@@ -59,6 +58,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     public int getItemCount() {
         return mIssues.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView issue;
         LinearLayout parentLayout;

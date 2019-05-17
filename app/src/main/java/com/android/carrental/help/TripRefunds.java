@@ -23,6 +23,7 @@ public class TripRefunds extends AppCompatActivity {
     private RecyclerView trips_recycler_view;
     private List<CarBooking> bookings;
     private TripsAdapter tripsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class TripRefunds extends AppCompatActivity {
         initWidgets();
         getSupportActionBar().setTitle("Trip History");
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -54,6 +56,7 @@ public class TripRefunds extends AppCompatActivity {
             }
         });
     }
+
     private void initWidgets() {
         trips_recycler_view.setHasFixedSize(true);
         trips_recycler_view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

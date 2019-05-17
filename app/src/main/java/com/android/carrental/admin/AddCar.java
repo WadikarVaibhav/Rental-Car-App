@@ -77,6 +77,7 @@ public class AddCar extends AppCompatActivity implements View.OnClickListener {
                 stationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 car_stations.setAdapter(stationArrayAdapter);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -98,6 +99,7 @@ public class AddCar extends AppCompatActivity implements View.OnClickListener {
                 carModelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 car_models.setAdapter(carModelArrayAdapter);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class CreditCard implements Serializable {
 
-    String cardNumber;
-    String cvv;
-    String zipCode;
-    String expMonth;
-    String expYear;
+    private String cardNumber;
+    private String cvv;
+    private String zipCode;
+    private String expMonth;
+    private String expYear;
 
     public CreditCard(String cardNumber, String cvv, String zipCode, String exp_month, String exp_year) {
         this.cardNumber = cardNumber;

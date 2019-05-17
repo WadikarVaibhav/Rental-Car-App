@@ -23,14 +23,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
-    public static final String USERS_KEY = "users";
-    public static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
-    public static final String EMAIL_KEY = "email";
-    public static final String PASSWORD_KEY = "password";
-    public static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
+    private static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
+    private static final String USERS_KEY = "users";
+    private static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
+    private static final String EMAIL_KEY = "email";
+    private static final String PASSWORD_KEY = "password";
+    private static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
     private Button signup;
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -54,11 +54,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextPassword = (EditText) findViewById(R.id.user_password);
         editTextFullName = (EditText) findViewById(R.id.name);
         editTextStreetAddress = (EditText) findViewById(R.id.address_street);
-        editTextAptNumber = (EditText)findViewById(R.id.address_apt_number);
-        editTextCity = (EditText)findViewById(R.id.address_city);
-        editTextZipCode = (EditText)findViewById(R.id.address_zip_code);
+        editTextAptNumber = (EditText) findViewById(R.id.address_apt_number);
+        editTextCity = (EditText) findViewById(R.id.address_city);
+        editTextZipCode = (EditText) findViewById(R.id.address_zip_code);
         payment = (Button) findViewById(R.id.payment_selector);
-        editTextPhoneNumber = (EditText)findViewById(R.id.phone_number);
+        editTextPhoneNumber = (EditText) findViewById(R.id.phone_number);
         signup.setOnClickListener(this);
         payment.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
@@ -127,38 +127,39 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         mAuth.createUserWithEmailAndPassword(email, password)
-        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    String uid=mAuth.getCurrentUser().getUid();
-                    User newUser = new User(uid,phoneNumber,name,email,phoneNumber,street_address,aptNumber,city,zipCode);
-                    newUser.setCreditCard(creditCard);
-                    FirebaseDatabase.getInstance().getReference("users")
-                            .child(uid)
-                            .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(),"Registered Successfully",Toast.LENGTH_SHORT).show();
-                                openLoginActivity();
-                            }else{
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            String uid = mAuth.getCurrentUser().getUid();
+                            User newUser = new User(uid, phoneNumber, name, email, phoneNumber, street_address, aptNumber, city, zipCode);
+                            newUser.setCreditCard(creditCard);
+                            FirebaseDatabase.getInstance().getReference("users")
+                                    .child(uid)
+                                    .setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                        openLoginActivity();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException)
+                                Toast.makeText(getApplicationContext(), "Email Already Exists!!", Toast.LENGTH_SHORT).show();
+                            else
                                 Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
                         }
-                    });
-                } else {
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                        Toast.makeText(getApplicationContext(),"Email Already Exists!!",Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                    }
+                });
     }
+
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.register_user){
+        if (v.getId() == R.id.register_user) {
             registerUser();
         } else if (v.getId() == R.id.payment_selector) {
             Intent intentToPayment = new Intent(this, PrePayment.class);
@@ -170,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            creditCard  = (CreditCard) data.getExtras().getSerializable("cardDetails");
+            creditCard = (CreditCard) data.getExtras().getSerializable("cardDetails");
             payment.setText("Added");
         }
     }

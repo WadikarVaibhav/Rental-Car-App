@@ -10,34 +10,58 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.ExtendTrip"></activity>
-        <activity android:name=".payment.PrePayment" />
+        <activity
+            android:name=".payment.PrePayment"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".help.HelpGuide" />
         <activity android:name=".help.TripRefunds" />
-        <activity android:name=".view.MyBookingDetails" />
+        <activity
+            android:name=".view.MyBookingDetails"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.MyBookings" />
-        <activity android:name=".account.EditMyAccount" />
-        <activity android:name=".account.MyAccount" />
-        <activity android:name=".payment.PaymentMethod" />
-        <activity android:name=".carbooking.CarBookingDashboard" />
+        <activity
+            android:name=".account.EditMyAccount"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".account.MyAccount"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".payment.PaymentMethod"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".carbooking.CarBookingDashboard"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.AvailableCars" />
-        <activity android:name=".account.LoginActivity">
+        <activity
+            android:name=".account.LoginActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".carbooking.CarOptionsFilter" />
+        <activity
+            android:name=".carbooking.CarOptionsFilter"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.CarModels" />
-        <activity android:name=".admin.AddCar" />
-        <activity android:name=".admin.AddCarModel" />
-        <activity android:name=".admin.AddStation" />
+        <activity
+            android:name=".admin.AddCar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".admin.AddCarModel"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".admin.AddStation"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.NearbyStations" />
         <activity
             android:name=".account.SignUpActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".help.Help" />
-        <activity android:name=".help.EditTripRefund" />
+        <activity
+            android:name=".help.EditTripRefund"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

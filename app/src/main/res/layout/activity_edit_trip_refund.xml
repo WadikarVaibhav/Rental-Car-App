@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".help.EditTripRefund">
+
     <LinearLayout
         android:id="@+id/car_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -19,17 +20,17 @@
             android:id="@+id/car_model_image_booking_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:scaleType="fitStart"
-            android:src="@drawable/ic_directions_car_black_24dp"
             android:layout_gravity="left|center"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_directions_car_black_24dp" />
 
         <TextView
             android:id="@+id/car_name_booking_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -47,16 +48,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/pickup_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/pickup_label" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pickup_location_on_booking_details"
             android:layout_width="0dp"
-            android:textSize="18sp"
             android:layout_height="match_parent"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -64,9 +65,9 @@
         android:id="@+id/date_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/pickup_details_on_booking_details"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/pickup_details_on_booking_details"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -74,16 +75,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/date_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/date_label" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/date_on_booking_details"
             android:layout_width="0dp"
-            android:textSize="18sp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -91,9 +92,9 @@
         android:id="@+id/start_time_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/date_details_on_booking_details"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/date_details_on_booking_details"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -101,16 +102,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/start_time_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/start_time_label" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/start_time_on_booking_details"
             android:layout_width="0dp"
-            android:textSize="18sp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -118,9 +119,9 @@
         android:id="@+id/end_time_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/start_time_details_on_booking_details"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/start_time_details_on_booking_details"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -128,16 +129,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/end_time_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/end_time_label" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/end_time_on_booking_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -145,9 +146,9 @@
         android:id="@+id/rate_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/end_time_details_on_booking_details"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/end_time_details_on_booking_details"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -155,25 +156,26 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/charges_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/charges_label" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/rate_on_booking_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/issue_details_on_booking_details"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/rate_details_on_booking_details"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/rate_details_on_booking_details"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -181,17 +183,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/issue_label"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/issue_label" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/issue_on_booking_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:maxLines="5"
-            android:textSize="18sp"
-            android:layout_weight="2" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

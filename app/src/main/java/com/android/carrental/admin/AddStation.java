@@ -17,12 +17,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddStation extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
-    public static final String USERS_KEY = "users";
-    public static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
-    public static final String EMAIL_KEY = "email";
-    public static final String PASSWORD_KEY = "password";
-    public static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
+    private static final String DUPLICATE_USER_MESSAGE = "User with this email already exist.";
+    private static final String USERS_KEY = "users";
+    private static final String REQUIRED_FIELDS_MESSAGE = "All fields are required";
+    private static final String EMAIL_KEY = "email";
+    private static final String PASSWORD_KEY = "password";
+    private static final String PASSWORD_LENGTH_MESSAGE = "Password must be at least 6 chars long";
     private Button save_address;
     private EditText address;
     private EditText city;

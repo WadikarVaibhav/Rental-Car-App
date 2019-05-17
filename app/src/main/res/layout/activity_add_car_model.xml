@@ -14,17 +14,17 @@
             android:id="@+id/model_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="All Types"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
-            android:hint="model" />
+            android:hint="model"
+            android:text="All Types" />
 
         <Button
+            android:id="@+id/save_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/model_name"
-            android:id="@+id/save_model"
             android:background="@color/colorPrimary"
             android:text="@string/save"
             android:textColor="#ffffff"

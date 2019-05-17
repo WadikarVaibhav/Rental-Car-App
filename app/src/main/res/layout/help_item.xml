@@ -22,10 +22,10 @@
                 android:id="@+id/help_issue"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center"
                 android:layout_marginLeft="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:gravity="left|center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
 
         </LinearLayout>
