@@ -189,17 +189,6 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <!--<Button-->
-            <!--android:id="@+id/extend_trip"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/button_style"-->
-            <!--android:text="@string/extend_trip_label"-->
-            <!--android:textColor="#ffffff"-->
-            <!--android:textSize="17sp"-->
-            <!--android:textStyle="bold" />-->
 
     </LinearLayout>
 

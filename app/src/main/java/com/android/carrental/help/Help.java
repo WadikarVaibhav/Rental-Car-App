@@ -15,6 +15,7 @@ public class Help extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private IssueAdapter mAdapter;
     List<String> mIssues;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +26,10 @@ public class Help extends AppCompatActivity {
         mIssues.add("Account and payment Options");
         mIssues.add("A guide to Rent a Car");
         mIssues.add("Contact Customer Service");
-        mRecyclerView = (RecyclerView)findViewById(R.id.IssuesDisplay);
+        mRecyclerView = (RecyclerView) findViewById(R.id.IssuesDisplay);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new IssueAdapter(this,mIssues);
+        mAdapter = new IssueAdapter(this, mIssues);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class EditTripRefund extends AppCompatActivity implements View.OnClickListener{
+public class EditTripRefund extends AppCompatActivity implements View.OnClickListener {
     private ImageView car_model_image;
     private TextView car_name;
     private TextView pickup_location;
@@ -34,6 +34,7 @@ public class EditTripRefund extends AppCompatActivity implements View.OnClickLis
     private EditText issue_on_booking_details;
     private Button submit;
     CarBooking carBooking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,27 +46,29 @@ public class EditTripRefund extends AppCompatActivity implements View.OnClickLis
         end_time = (TextView) findViewById(R.id.end_time_on_booking_details);
         date = (TextView) findViewById(R.id.date_on_booking_details);
         total_fare = (TextView) findViewById(R.id.rate_on_booking_details);
-        issue_on_booking_details = (EditText)findViewById(R.id.issue_on_booking_details);
-        submit = (Button)findViewById(R.id.submit);
+        issue_on_booking_details = (EditText) findViewById(R.id.issue_on_booking_details);
+        submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(this);
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
         fetchDetailsForMyBooking();
     }
+
     private void fetchDetailsForMyBooking() {
 
         car_name.setText(carBooking.getCar().getName());
         pickup_location.setText(carBooking.getStation().getAddress());
         start_time.setText(carBooking.getStartTime());
         end_time.setText(carBooking.getEndTime());
-        total_fare.setText(carBooking.getRate()+"");
+        total_fare.setText(carBooking.getRate() + "");
         date.setText(carBooking.getBookingDate());
     }
+
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.submit){
+        if (v.getId() == R.id.submit) {
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             String id = FirebaseDatabase.getInstance().getReference().child(uid).child("issues").push().getKey();
-            FirebaseDatabase.getInstance().getReference().child("issues").child(id).setValue(new TripIssue(uid,carBooking.getStation().getAddress(),
+            FirebaseDatabase.getInstance().getReference().child("issues").child(id).setValue(new TripIssue(uid, carBooking.getStation().getAddress(),
                     carBooking.getBookingDate(),
                     carBooking.getStartTime(),
                     carBooking.getEndTime(),

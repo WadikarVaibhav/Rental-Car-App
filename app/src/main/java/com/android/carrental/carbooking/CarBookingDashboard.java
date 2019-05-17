@@ -59,16 +59,15 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
     }
 
 
-
     private void fetchSelectedCarDetails() {
         selectedCar = (Car) getIntent().getSerializableExtra("selectedCar");
         selectedStation = (Station) getIntent().getSerializableExtra("selectedStation");
-        car_name.setText(selectedCar.getName() + " ("+selectedCar.getColor()+")");
+        car_name.setText(selectedCar.getName() + " (" + selectedCar.getColor() + ")");
         pickup.setText(selectedStation.getAddress());
         date.setText(getIntent().getExtras().getString("selectedDate"));
         start_time.setText(getIntent().getExtras().getString("startTime"));
         end_time.setText(getIntent().getExtras().getString("endTime"));
-        rate.setText("$"+getIntent().getExtras().getInt("rate")+"");
+        rate.setText("$" + getIntent().getExtras().getInt("rate") + "");
     }
 
     @Override
@@ -82,7 +81,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         int hoursBooked = getIntent().getExtras().getInt("hoursBooked");
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         String id = databaseReference.push().getKey();
-        CarBooking carBooking = new CarBooking(id,user, selectedCar, selectedStation, date, startTime, endTime, rate, hoursBooked,false);
+        CarBooking carBooking = new CarBooking(id, user, selectedCar, selectedStation, date, startTime, endTime, rate, hoursBooked, false);
         databaseReference.child("bookings").child(id).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(Task<Void> task) {
@@ -109,6 +108,7 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
                     }
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

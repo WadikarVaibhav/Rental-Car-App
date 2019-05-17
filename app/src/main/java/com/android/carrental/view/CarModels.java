@@ -47,6 +47,7 @@ public class CarModels extends AppCompatActivity {
 
                 carModelsAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

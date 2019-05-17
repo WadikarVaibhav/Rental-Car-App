@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ExtendTrip">
+
     <LinearLayout
         android:id="@+id/station_details"
         android:layout_width="match_parent"
@@ -17,17 +18,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:text="@string/station_label"
             android:gravity="left|center"
-            android:textSize="18sp"/>
+            android:text="@string/station_label"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/station_display"
-            android:background="@drawable/button_filter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:background="@drawable/button_filter"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -45,17 +46,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/date_label"
             android:gravity="left|center"
+            android:text="@string/date_label"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/date_display"
-            android:background="@drawable/button_filter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:background="@drawable/button_filter"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -72,8 +73,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="left|center"
             android:layout_weight="1"
+            android:gravity="left|center"
             android:text="@string/start_time_label"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -81,9 +82,9 @@
         <Button
             android:id="@+id/start_time"
             android:layout_width="0dp"
-            android:background="@drawable/button_filter"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:background="@drawable/button_filter"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -101,17 +102,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/end_time_label"
             android:gravity="left|center"
+            android:text="@string/end_time_label"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/end_time"
             android:layout_width="0dp"
-            android:background="@drawable/button_filter"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:background="@drawable/button_filter"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -128,27 +129,27 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="left|center"
             android:layout_weight="1"
-            android:text="@string/vehicle_type" />
+            android:gravity="left|center"
+            android:text="@string/vehicle_type"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/car_type_display"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/button_filter"
             android:layout_weight="2"
-            android:textSize="18sp"/>
+            android:background="@drawable/button_filter"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/extend_car"
         android:layout_width="match_parent"
-        android:layout_below="@+id/vehicle_type_details_on_extend"
         android:layout_height="50dp"
+        android:layout_below="@+id/vehicle_type_details_on_extend"
         android:layout_margin="10dp"
         android:background="@drawable/button_style"
         android:text="@string/extend_trip_label"

@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class ExtendTrip extends AppCompatActivity implements View.OnClickListener{
+public class ExtendTrip extends AppCompatActivity implements View.OnClickListener {
     private Button station_display;
     private Button date_display;
     private Button start_time;
@@ -57,7 +57,7 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
         start_time = (Button) findViewById(R.id.start_time);
         car_type_display = (Button) findViewById(R.id.car_type_display);
         end_time = (Button) findViewById(R.id.end_time);
-        extend_car=(Button)findViewById(R.id.extend_car);
+        extend_car = (Button) findViewById(R.id.extend_car);
         calendar = Calendar.getInstance();
         station_display.setText(carSelected.getStation().getAddress());
         date_display.setText(carSelected.getBookingDate());
@@ -92,22 +92,22 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
         return strHrsToShow + TIME_SEPARATOR + " " + TIME_AM_PM;
     }
 
-    private void extendCar(){
-        if(getTimeDifference() > 0){
+    private void extendCar() {
+        if (getTimeDifference() > 0) {
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("bookings");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         CarBooking carBooking = snapshot.getValue(CarBooking.class);
-                        if(carSelected.getId().equals(carBooking.getId())){
+                        if (carSelected.getId().equals(carBooking.getId())) {
                             CarBooking newBooking = carBooking;
                             newBooking.setRate(newBooking.getRate() + getRate());
                             newBooking.setEndTime(end_time.getText().toString().trim());
                             databaseReference.child(newBooking.getId()).setValue(carBooking).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(),"Trip Extended Successfully",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Trip Extended Successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
@@ -123,8 +123,8 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
 
                 }
             });
-        }else{
-            Toast.makeText(getApplicationContext(),"End time must be greater than start time",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "End time must be greater than start time", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -161,15 +161,20 @@ public class ExtendTrip extends AppCompatActivity implements View.OnClickListene
         }
         return 0;
     }
+
     private String modifiedEndTime() {
         return "11:59 PM";
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.end_time:selectEndTime();break;
-            case R.id.extend_car: extendCar();break;
+        switch (v.getId()) {
+            case R.id.end_time:
+                selectEndTime();
+                break;
+            case R.id.extend_car:
+                extendCar();
+                break;
         }
     }
 }

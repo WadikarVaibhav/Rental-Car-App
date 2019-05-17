@@ -19,11 +19,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String REQUIRED_FIELDS_MESSAGE = "All fields are mandatory";
-    public static final String CREDENTIALS_INCORRECT_MESSAGE = "Email or Password Incorrect";
-    public static final String EMAIL_KEY = "email";
-    public static final String PASSWORD_KEY = "password";
-    public static final String REGISTRATION_SUCCESSFUL_MESSAGE = "Registration Successful. Please Login";
+    private static final String REQUIRED_FIELDS_MESSAGE = "All fields are mandatory";
+    private static final String CREDENTIALS_INCORRECT_MESSAGE = "Email or Password Incorrect";
+    private static final String EMAIL_KEY = "email";
+    private static final String PASSWORD_KEY = "password";
+    private static final String REGISTRATION_SUCCESSFUL_MESSAGE = "Registration Successful. Please Login";
     private Button loginButton;
     private Button registerButton;
     private EditText loginEmail;
@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerButton.setOnClickListener(this);
         getSupportActionBar().setTitle("Login");
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -60,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
     private void loginUser() {
         if (!loginEmail.getText().toString().isEmpty() && !loginPassword.getText().toString().isEmpty()) {
             makeFieldsNonEditable();
@@ -97,6 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, REGISTRATION_SUCCESSFUL_MESSAGE, Toast.LENGTH_SHORT).show();
         }
     }
+
     private void makeFieldsNonEditable() {
         loginEmail.setEnabled(false);
         loginPassword.setEnabled(false);
@@ -108,6 +111,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginPassword.setEnabled(true);
         loginButton.setEnabled(true);
     }
+
     private void openHomeScreen() {
         Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
         startActivity(intent);

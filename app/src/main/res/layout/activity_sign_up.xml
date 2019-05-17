@@ -138,20 +138,20 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="left|center"
                 android:layout_weight="1"
-                android:text="@string/payment" />
+                android:gravity="left|center"
+                android:text="@string/payment"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/payment_selector"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:background="@drawable/button_filter"
                 android:text="@string/payment_add_message"
-                android:layout_weight="2"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 

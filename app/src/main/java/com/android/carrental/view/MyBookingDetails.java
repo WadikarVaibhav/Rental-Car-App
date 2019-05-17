@@ -36,7 +36,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     private TextView date;
     private TextView total_fare;
     private Button finish_booking;
-//    private Button extend_booking;
+    //    private Button extend_booking;
     private CarBooking carBooking;
     private static final String AM = "AM";
     private static final String PM = "PM";
@@ -61,7 +61,11 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
 //        extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
-        if (getTimeDifference() < 0 || isCancel()) {
+        if (carBooking.getBookingDate().trim().equals(getCurrentDate(0).trim())) {
+            finish_booking.setText("CANCEL");
+            if (getTimeDifference() <= 0)
+                finish_booking.setText("FINISH");
+        } else if (isCancel()) {
             finish_booking.setText("CANCEL");
         }
 
@@ -78,7 +82,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         pickup_location.setText(carBooking.getStation().getAddress());
         start_time.setText(carBooking.getStartTime());
         end_time.setText(carBooking.getEndTime());
-        total_fare.setText("$"+carBooking.getRate());
+        total_fare.setText("$" + carBooking.getRate());
         date.setText(carBooking.getBookingDate());
     }
 
@@ -152,7 +156,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
             DateFormat df = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
             Date d1 = df.parse(carBooking.getBookingDate() + " " + carBooking.getStartTime());
             Date d2 = df.parse(carBooking.getBookingDate() + " " + getCurrentTime(0));
-            int hoursDifference = (int) ((d2.getTime() - d1.getTime()) / 3600000L);
+            int hoursDifference = (int) ((d1.getTime() - d2.getTime()) / 3600000L);
 
             if (getCurrentTime(0).equals(modifiedEndTime())) {
                 hoursDifference += 1;

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".account.EditMyAccount">
+
     <LinearLayout
         android:id="@+id/name_on_my_account"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:weightSum="2">
 
@@ -20,19 +21,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:text="@string/name_on_my_account"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/name"
             android:layout_width="0dp"
-            android:textSize="18sp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_weight="1.3" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/email_on_my_account"
         android:layout_width="match_parent"
@@ -45,20 +47,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_weight="0.7"
+            android:text="@string/email_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/email_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_weight="1.3" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/phone_on_my_account"
         android:layout_width="match_parent"
@@ -71,20 +74,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_weight="0.7"
+            android:text="@string/phone_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/phone_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/phone_number"
-            android:layout_weight="1.3"
-            android:textSize="18sp"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/street_on_my_account"
         android:layout_width="match_parent"
@@ -97,19 +101,19 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_weight="0.7"
+            android:text="@string/street_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/street_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/street_address"
-            android:layout_weight="1.3"
             android:layout_width="0dp"
-            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -124,20 +128,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_weight="0.7"
+            android:text="@string/apt_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/apt_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/apt_number"
-            android:textSize="18sp"
-            android:layout_weight="1.3"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/city_on_my_account"
         android:layout_width="match_parent"
@@ -150,20 +155,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_weight="0.7"
+            android:text="@string/city_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/city_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/city"
-            android:layout_weight="1.3"
-            android:textSize="18sp"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/zip_on_my_account"
         android:layout_width="match_parent"
@@ -176,20 +182,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_weight="0.7"
+            android:text="@string/zip_on_my_account"
             android:textColor="@color/black"
-            android:text="@string/zip_on_my_account" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/zip_code"
-            android:layout_weight="1.3"
-            android:textSize="18sp"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:textSize="18sp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/save_details"
         android:layout_width="match_parent"
