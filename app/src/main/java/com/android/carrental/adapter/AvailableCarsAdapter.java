@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.carrental.CarBookingDashboard;
+import com.android.carrental.carbooking.CarBookingDashboard;
 import com.android.carrental.R;
 import com.android.carrental.model.Car;
 import com.android.carrental.model.Station;

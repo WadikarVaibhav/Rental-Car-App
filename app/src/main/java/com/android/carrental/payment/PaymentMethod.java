@@ -1,5 +1,6 @@
 package com.android.carrental.payment;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.android.carrental.R;
 import com.android.carrental.model.CreditCard;
 import com.android.carrental.model.User;
+import com.android.carrental.view.NearbyStations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -141,6 +143,9 @@ public class PaymentMethod extends AppCompatActivity implements View.OnClickList
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Card Details Updated Successfully", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }

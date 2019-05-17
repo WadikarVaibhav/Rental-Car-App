@@ -1,21 +1,21 @@
 package com.android.carrental.model;
 
 public class User {
-    private final String name;
-    private final String streetAddress;
-    private final String aptNumber;
-    private final String city;
-    private final String zipCode;
-    private final String email;
-    private final String phoneNumber;
-    private final String id;
+    private String name;
+    private String streetAddress;
+    private String aptNumber;
+    private String city;
+    private String zipCode;
+    private String email;
+    private String phoneNumber;
+    private String id;
     private CreditCard creditCard;
 
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
 
-    public CreditCard getCreditCard () {
+    public CreditCard getCreditCard() {
         return this.creditCard;
     }
 
@@ -50,6 +50,39 @@ public class User {
     public String getId() {
         return id;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setAptNumber(String aptNumber) {
+        this.aptNumber = aptNumber;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public User() {
         this.name = "";

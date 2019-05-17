@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment.PrePayment"></activity>
+        <activity android:name=".view.ExtendTrip"></activity>
+        <activity android:name=".payment.PrePayment" />
         <activity android:name=".help.HelpGuide" />
         <activity android:name=".help.TripRefunds" />
         <activity android:name=".view.MyBookingDetails" />
@@ -17,7 +18,7 @@
         <activity android:name=".account.EditMyAccount" />
         <activity android:name=".account.MyAccount" />
         <activity android:name=".payment.PaymentMethod" />
-        <activity android:name=".CarBookingDashboard" />
+        <activity android:name=".carbooking.CarBookingDashboard" />
         <activity android:name=".view.AvailableCars" />
         <activity android:name=".account.LoginActivity">
             <intent-filter>
@@ -26,15 +27,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CarOptionsFilter" />
+        <activity android:name=".carbooking.CarOptionsFilter" />
         <activity android:name=".view.CarModels" />
         <activity android:name=".admin.AddCar" />
         <activity android:name=".admin.AddCarModel" />
         <activity android:name=".admin.AddStation" />
         <activity android:name=".view.NearbyStations" />
-        <activity android:name=".account.SignUpActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".account.SignUpActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".help.Help" />
-        <activity android:name=".help.EditTripRefund"/>
+        <activity android:name=".help.EditTripRefund" />
     </application>
 
 </manifest>

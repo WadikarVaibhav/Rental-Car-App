@@ -65,8 +65,7 @@ public class EditTripRefund extends AppCompatActivity implements View.OnClickLis
         if(v.getId() == R.id.submit){
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             String id = FirebaseDatabase.getInstance().getReference().child(uid).child("issues").push().getKey();
-            FirebaseDatabase.getInstance().getReference()
-                    .child(uid).child("issues").child(id).setValue(new TripIssue(uid,carBooking.getStation().getAddress(),
+            FirebaseDatabase.getInstance().getReference().child("issues").child(id).setValue(new TripIssue(uid,carBooking.getStation().getAddress(),
                     carBooking.getBookingDate(),
                     carBooking.getStartTime(),
                     carBooking.getEndTime(),

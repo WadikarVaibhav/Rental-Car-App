@@ -1,4 +1,4 @@
-package com.android.carrental;
+package com.android.carrental.carbooking;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.carrental.R;
 import com.android.carrental.model.Car;
 import com.android.carrental.model.CarBooking;
 import com.android.carrental.model.CarModel;
 import com.android.carrental.model.Station;
 import com.android.carrental.model.User;
 import com.android.carrental.view.MyBookings;
+import com.android.carrental.view.NearbyStations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -78,15 +80,18 @@ public class CarBookingDashboard extends AppCompatActivity implements View.OnCli
         String date = getIntent().getExtras().getString("selectedDate");
         int rate = getIntent().getExtras().getInt("rate");
         int hoursBooked = getIntent().getExtras().getInt("hoursBooked");
-        CarBooking carBooking = new CarBooking(user, selectedCar, selectedStation, date, startTime, endTime, rate, hoursBooked);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         String id = databaseReference.push().getKey();
+        CarBooking carBooking = new CarBooking(id,user, selectedCar, selectedStation, date, startTime, endTime, rate, hoursBooked,false);
         databaseReference.child("bookings").child(id).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(Task<Void> task) {
                 Toast.makeText(getApplicationContext(), "Booking Confirmed", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MyBookings.class);
+                Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
+
             }
         });
     }

@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class CarBooking implements Serializable {
 
+    private String id;
     private String user;
     private Station station;
     private String bookingDate;
@@ -19,6 +20,18 @@ public class CarBooking implements Serializable {
     private int rate;
     private int hoursBooked;
     private boolean isComplete;
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public int getRate() {
         return rate;
@@ -44,7 +57,7 @@ public class CarBooking implements Serializable {
         this.hoursBooked = hoursBooked;
     }
 
-    public CarBooking(String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate, int hoursBooked) {
+    public CarBooking(String id, String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate, int hoursBooked, boolean isComplete) {
         this.user = user;
         this.station = station;
         this.bookingDate = bookingDate;
@@ -53,7 +66,8 @@ public class CarBooking implements Serializable {
         this.car = car;
         this.rate = rate;
         this.hoursBooked = hoursBooked;
-        this.isComplete = false;
+        this.isComplete = isComplete;
+        this.id = id;
     }
 
     public Car getCar() {

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.carrental.R;
@@ -38,7 +39,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsView
         final CarBooking booking = bookings.get(i);
         bookingsViewHolder.booked_car.setText(booking.getCar().getName());
         bookingsViewHolder.booking_date.setText(booking.getBookingDate());
-        bookingsViewHolder.booking_status.setText("Completed");
+        bookingsViewHolder.booking_status.setImageResource(getStatus(booking.isComplete()));
         bookingsViewHolder.booking_station.setText(booking.getStation().getAddress());
         bookingsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,12 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsView
                 showBookingDetails(booking);
             }
         });
+    }
+    private int getStatus(boolean isComplete) {
+        if (isComplete) {
+            return R.drawable.ic_check_black_24dp;
+        }
+        return R.drawable.icons8_hourglass_24;
     }
 
     private void showBookingDetails(CarBooking booking) {
@@ -63,7 +70,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.BookingsView
 
         public TextView booking_date;
         public TextView booked_car;
-        public TextView booking_status;
+        public ImageView booking_status;
         public TextView booking_station;
 
         public BookingsViewHolder(View itemView) {

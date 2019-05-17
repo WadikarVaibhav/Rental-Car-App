@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carbooking.CarOptionsFilter">
-
+    tools:context=".view.ExtendTrip">
     <LinearLayout
         android:id="@+id/station_details"
         android:layout_width="match_parent"
@@ -21,20 +20,20 @@
             android:textStyle="bold"
             android:text="@string/station_label"
             android:gravity="left|center"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
-        <Spinner
-            android:id="@+id/car_stations_spinner_filter"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/station_display"
             android:background="@drawable/button_filter"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2">
-        </Spinner>
+            android:layout_weight="2"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/date_picker_on_filter"
+        android:id="@+id/date_display_on_extend_trip"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@id/station_details"
@@ -52,7 +51,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/date_selector"
+            android:id="@+id/date_display"
             android:background="@drawable/button_filter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -62,10 +61,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/start_time_details_on_filter"
+        android:id="@+id/start_time_details_on_extend"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/date_picker_on_filter"
+        android:layout_below="@id/date_display_on_extend_trip"
         android:layout_margin="20dp"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -90,10 +89,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/end_time_details_on_filter"
+        android:id="@+id/end_time_details_on_extend"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/start_time_details_on_filter"
+        android:layout_below="@id/start_time_details_on_extend"
         android:layout_margin="20dp"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -118,10 +117,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/vehicle_type_details_on_filter"
+        android:id="@+id/vehicle_type_details_on_extend"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/end_time_details_on_filter"
+        android:layout_below="@id/end_time_details_on_extend"
         android:layout_margin="20dp"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -136,7 +135,7 @@
             android:text="@string/vehicle_type" />
 
         <Button
-            android:id="@+id/car_type_selector"
+            android:id="@+id/car_type_display"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/button_filter"
@@ -146,13 +145,13 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/search_car"
+        android:id="@+id/extend_car"
         android:layout_width="match_parent"
-        android:layout_below="@+id/vehicle_type_details_on_filter"
+        android:layout_below="@+id/vehicle_type_details_on_extend"
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:background="@drawable/button_style"
-        android:text="@string/search_cars"
+        android:text="@string/extend_trip_label"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
