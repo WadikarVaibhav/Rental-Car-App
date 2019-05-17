@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CarBooking implements Serializable {
+
     private String id;
     private String user;
     private Station station;
@@ -56,7 +57,7 @@ public class CarBooking implements Serializable {
         this.hoursBooked = hoursBooked;
     }
 
-    public CarBooking(String id,String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate, int hoursBooked,boolean isComplete) {
+    public CarBooking(String id, String user, Car car, Station station, String bookingDate, String startTime, String endTime, int rate, int hoursBooked, boolean isComplete) {
         this.user = user;
         this.station = station;
         this.bookingDate = bookingDate;

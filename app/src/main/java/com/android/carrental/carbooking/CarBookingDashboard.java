@@ -1,4 +1,4 @@
-package com.android.carrental;
+package com.android.carrental.carbooking;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.carrental.R;
 import com.android.carrental.model.Car;
 import com.android.carrental.model.CarBooking;
 import com.android.carrental.model.CarModel;

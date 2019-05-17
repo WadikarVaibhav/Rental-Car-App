@@ -18,7 +18,7 @@
         <activity android:name=".account.EditMyAccount" />
         <activity android:name=".account.MyAccount" />
         <activity android:name=".payment.PaymentMethod" />
-        <activity android:name=".CarBookingDashboard" />
+        <activity android:name=".carbooking.CarBookingDashboard" />
         <activity android:name=".view.AvailableCars" />
         <activity android:name=".account.LoginActivity">
             <intent-filter>
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CarOptionsFilter" />
+        <activity android:name=".carbooking.CarOptionsFilter" />
         <activity android:name=".view.CarModels" />
         <activity android:name=".admin.AddCar" />
         <activity android:name=".admin.AddCarModel" />

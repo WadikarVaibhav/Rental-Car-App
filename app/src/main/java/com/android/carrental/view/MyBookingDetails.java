@@ -36,8 +36,8 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
     private TextView date;
     private TextView total_fare;
     private Button finish_booking;
-    private Button extend_booking;
-    CarBooking carBooking;
+//    private Button extend_booking;
+    private CarBooking carBooking;
     private static final String AM = "AM";
     private static final String PM = "PM";
     private static String TIME_AM_PM = "";
@@ -56,18 +56,18 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         date = (TextView) findViewById(R.id.date_on_booking_details);
         total_fare = (TextView) findViewById(R.id.rate_on_booking_details);
         finish_booking = (Button) findViewById(R.id.finish_trip);
-        extend_booking = (Button) findViewById(R.id.extend_trip);
+//        extend_booking = (Button) findViewById(R.id.extend_trip);
         finish_booking.setOnClickListener(this);
-        extend_booking.setOnClickListener(this);
+//        extend_booking.setOnClickListener(this);
         getSupportActionBar().setTitle("Booking Details");
         carBooking = (CarBooking) getIntent().getSerializableExtra("booking");
-        if(getTimeDifference() < 0 || isCancel()){
+        if (getTimeDifference() < 0 || isCancel()) {
             finish_booking.setText("CANCEL");
         }
 
-            if (carBooking.isComplete()) {
+        if (carBooking.isComplete()) {
             finish_booking.setVisibility(View.GONE);
-            extend_booking.setVisibility(View.GONE);
+//            extend_booking.setVisibility(View.GONE);
         }
         fetchDetailsForMyBooking();
 
@@ -78,7 +78,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         pickup_location.setText(carBooking.getStation().getAddress());
         start_time.setText(carBooking.getStartTime());
         end_time.setText(carBooking.getEndTime());
-        total_fare.setText(carBooking.getRate() + "");
+        total_fare.setText("$"+carBooking.getRate());
         date.setText(carBooking.getBookingDate());
     }
 
@@ -88,11 +88,11 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
             case R.id.finish_trip:
                 finishTrip();
                 break;
-            case R.id.extend_trip:
+            /*case R.id.extend_trip:
                 Intent intent = new Intent(this, ExtendTrip.class);
                 intent.putExtra("booking", carBooking);
                 startActivity(intent);
-                break;
+                break;*/
         }
     }
 
@@ -105,10 +105,13 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
                     CarBooking booking = snapshot.getValue(CarBooking.class);
                     if (carBooking.getId().equals(booking.getId())) {
                         carBooking.setComplete(true);
+                        if (finish_booking.getText().toString().equals("CANCEL")) {
+                            carBooking.setRate(2);
+                            Toast.makeText(getApplicationContext(), "Cancellation Fee of $2 is applied", Toast.LENGTH_LONG).show();
+                        }
                         databaseReference.child(booking.getId()).setValue(carBooking).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(Task<Void> task) {
-                                Toast.makeText(getApplicationContext(), "Thankyou", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), NearbyStations.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
@@ -125,12 +128,14 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
             }
         });
     }
+
     private String getCurrentTime(int step) {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.HOUR, step);
         int hour = c.get(Calendar.HOUR_OF_DAY);
         return formatTime(hour);
     }
+
     private String formatTime(int hour) {
         Calendar datetime = Calendar.getInstance();
         datetime.set(Calendar.HOUR_OF_DAY, hour);
@@ -141,6 +146,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         String strHrsToShow = (datetime.get(Calendar.HOUR) == 0) ? TIME_DIVIDER : datetime.get(Calendar.HOUR) + "";
         return strHrsToShow + TIME_SEPARATOR + " " + TIME_AM_PM;
     }
+
     private int getTimeDifference() {
         try {
             DateFormat df = new SimpleDateFormat(DATE_FORMAT + " hh:mm a");
@@ -157,9 +163,11 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         }
         return 0;
     }
+
     private String modifiedEndTime() {
         return "11:59 PM";
     }
+
     private String getCurrentDate(int step) {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH, step);
@@ -168,6 +176,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         int day = c.get(Calendar.DAY_OF_MONTH);
         return formatDate(year, month, day);
     }
+
     private static String formatDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(0);
@@ -176,6 +185,7 @@ public class MyBookingDetails extends AppCompatActivity implements View.OnClickL
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         return sdf.format(date);
     }
+
     private boolean isCancel() {
         try {
             DateFormat df = new SimpleDateFormat(DATE_FORMAT);

@@ -1,4 +1,4 @@
-package com.android.carrental;
+package com.android.carrental.carbooking;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.carrental.R;
 import com.android.carrental.model.Car;
 import com.android.carrental.model.CarBooking;
 import com.android.carrental.model.CarModel;
